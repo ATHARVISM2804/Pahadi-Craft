@@ -49,7 +49,7 @@ const Navbar = () => {
             to="/" 
             className="text-2xl font-serif text-[#5A4232] hover:text-[#C9A66B] transition-colors duration-300"
           >
-            <img className="h-20 w-auto ml-2   filter sepia brightness-90 hue-rotate-[10deg] saturate-200 drop-shadow-lg" src="/images/icon2.png" alt="" />
+            <img className="h-20 w-auto ml-2   filter sepia brightness-90 hue-rotate-[10deg] saturate-200 drop-shadow-lg" src="/images/icon1.png" alt="" />
             {/* Pahadi Craft */}
           </Link>
 
