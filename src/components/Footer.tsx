@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-2xl font-serif mb-4">CandleLightDuke</h3>
+            <h3 className="text-2xl font-serif mb-4">Pahadicraft</h3>
             <p className="text-gray-300 mb-4">
               Illuminating spaces with handcrafted elegance since 2020.
             </p>
@@ -66,22 +66,23 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-[#C9A66B]" />
-                <span>123 Candle Street, NY 10001</span>
+                <span>Pahadi Craft, Gagret, Distt.Una,Himachal Pradesh-177201</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-5 h-5 text-[#C9A66B]" />
-                <span>(555) 123-4567</span>
+                <span>(+91) 7660077316</span> 
+                
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-[#C9A66B]" />
-                <span>hello@candlelightduke.com</span>
+                <span>candlelightduke@gmail.com</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; {new Date().getFullYear()} CandleLightDuke. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} PahadiCraft. All rights reserved.</p>
         </div>
       </div>
     </footer>

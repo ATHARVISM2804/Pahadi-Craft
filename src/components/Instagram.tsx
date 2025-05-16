@@ -2,14 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Instagram as InstagramIcon } from 'lucide-react';
 
+import insta1 from '../images1/insta1.png';
+import insta2 from '../images1/insta2.png';
+import insta3 from '../images1/insta3.png';
 const instagramPosts = [
   {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1636633762833-5d1658f1e29b?q=80&w=2940&auto=format&fit=crop',
+    image: insta1,
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=2940&auto=format&fit=crop',
+    image: insta2,
   },
   {
     id: 3,
@@ -17,7 +20,7 @@ const instagramPosts = [
   },
   {
     id: 4,
-    image: 'https://images.unsplash.com/photo-1596433809252-901acb9ae0b7?q=80&w=2940&auto=format&fit=crop',
+    image: insta3,
   },
 ];
 
@@ -54,7 +57,7 @@ const Instagram = () => {
               href="#"
               className="inline-flex items-center gap-2 text-[#5A4232] hover:text-[#C9A66B] transition-colors"
             >
-              <span>@candlelightduke</span>
+              <span>@PahadiCraft</span>
               <InstagramIcon className="w-5 h-5" />
             </a>
           </div>
