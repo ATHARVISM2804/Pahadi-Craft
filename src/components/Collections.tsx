@@ -1,18 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import luxuryImg from '../images1/11.png';
+import festive from  '../images1/festive.png';
+
 const collections = [
   {
     id: 1,
     name: 'Luxury Collection',
     description: 'Premium candles crafted with the finest ingredients',
-    image: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?q=80&w=2940&auto=format&fit=crop',
+    image: luxuryImg,
   },
   {
     id: 2,
     name: 'Seasonal Favorites',
     description: 'Special editions for every season',
-    image: 'https://images.unsplash.com/photo-1605651202774-7d573fd3f12d?q=80&w=2940&auto=format&fit=crop',
+    image: festive,
   },
 ];
 

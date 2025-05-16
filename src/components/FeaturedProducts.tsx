@@ -2,26 +2,109 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
 
+import jarcandles from '../images1/jarcandles.png';
+import metalcraft from '../images1/metalcraft.png';
+import halloween from '../images1/halloween.png';
+import valentine from '../images1/valentine.png';
+import piller from '../images1/piller.png';
+import teracotta from '../images1/teracotta.png';
+import bathsalt from '../images1/bathsalts.png';
+import homedecor from '../images1/homedecor.png';
+import ceramicsjars from '../images1/ceramicjars.png';
+import medicinaloils from '../images1/medicinaloil.png';
+import pinecones from '../images1/pinecones.png';
+import resinheart from '../images1/resinheart.png';
+import resintray from '../images1/resintrays.png';
 const products = [
   {
     id: 1,
-    name: 'Vanilla Dreams',
-    price: 34.99,
-    image: 'https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?q=80&w=2940&auto=format&fit=crop',
+    name: 'Jar Candles',
+    price: 300,
+    image: jarcandles,
     rating: 5,
   },
   {
     id: 2,
-    name: 'Lavender Mist',
-    price: 29.99,
-    image: 'https://images.unsplash.com/photo-1596433809252-901acb9ae0b7?q=80&w=2940&auto=format&fit=crop',
+    name: 'Metal Craft Candles',
+    price: 300,
+    image: metalcraft,
     rating: 4,
   },
   {
     id: 3,
-    name: 'Ocean Breeze',
-    price: 39.99,
-    image: 'https://images.unsplash.com/photo-1599446794254-16ca3df5a0bb?q=80&w=2940&auto=format&fit=crop',
+    name: 'Halloween Candles',
+    price: 300,
+    image: halloween,
+    rating: 5,
+  },
+  {
+    id: 4,
+    name: 'Vallentine Candles',
+    price: 300,
+    image: valentine,
+    rating: 5,
+  },
+  {
+    id: 5,
+    name: 'piller Candles',
+    price: 300,
+    image: piller,
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: 'Teracotta Candles',
+    price: 300,
+    image: teracotta,
+    rating: 5,
+  },
+  {
+    id: 7,
+    name: 'Bath Salt Candles',
+    price: 300,
+    image: bathsalt,
+    rating: 5,
+  },
+  {
+    id: 8,
+    name: 'Home Decor Candles',
+    price: 300,
+    image: homedecor,
+    rating: 5,
+  },
+  {
+    id: 9,
+    name: 'Ceramic Jars Candles',
+    price: 300,
+    image: ceramicsjars,
+    rating: 5,
+  },
+  {
+    id: 10,
+    name: 'Medicinal Oils ',
+    price: 300,
+    image: medicinaloils,
+    rating: 5,
+  },
+  {
+    id: 11,
+    name: 'Pinecones Candles',
+    price: 300,
+    image: pinecones,
+    rating: 5,
+  },
+  {
+    id: 12,
+    name: 'Resin Heart Candles',
+    price: 300,
+    image: resinheart,
+    rating: 5,
+  },
+  {
+    id: 13,
+    name: 'Resin Tray Candles',
+    price: 300,
+    image: resintray,
     rating: 5,
   },
 ];
@@ -49,7 +132,7 @@ const FeaturedProducts = () => {
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
                     <h3 className="text-xl font-serif text-white">{product.name}</h3>
                     <div className="flex items-center justify-between mt-2">
-                      <p className="text-white font-semibold">${product.price}</p>
+                      <p className="text-white font-semibold">₹{product.price}</p>
                       <div className="flex">
                         {[...Array(product.rating)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 text-[#C9A66B] fill-current" />

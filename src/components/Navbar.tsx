@@ -41,7 +41,7 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-[#C9A66B]/20"
+      className="fixed w-full z-50 bg-white/30 backdrop-blur-lg border-b border-[#C9A66B]/20 shadow-md"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -49,7 +49,7 @@ const Navbar = () => {
             to="/" 
             className="text-2xl font-serif text-[#5A4232] hover:text-[#C9A66B] transition-colors duration-300"
           >
-            <img className="h-20 w-auto ml-2" src="/images/icon1.png" alt="" />
+            <img className="h-20 w-auto ml-2   filter sepia brightness-90 hue-rotate-[10deg] saturate-200 drop-shadow-lg" src="/images/icon2.png" alt="" />
             {/* Pahadi Craft */}
           </Link>
 
