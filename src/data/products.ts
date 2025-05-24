@@ -774,45 +774,7 @@ export const products: Product[] = [
     burnTime: '45-50 hours',
     weight: '8 oz',
   },
-   {
-    id: '56',
-    name: 'Wax Tablets',
-    description: 'Wax tablets are scented wax pieces that can be melted in a warmer to release fragrance, perfect for creating a cozy atmosphere without the flame.',
-
-    
-    price: 300,
-    image: wax1,
-    category: 'Floral',
-    fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
-    burnTime: '45-50 hours',
-    weight: '8 oz',
-  },
-    {
-    id: '57',
-    name: 'Wax Tablets',
-    description: 'Wax tablets are scented wax pieces that can be melted in a warmer to release fragrance, perfect for creating a cozy atmosphere without the flame.',
-
-    
-    price: 300,
-    image: wax2,
-    category: 'Floral',
-    fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
-    burnTime: '45-50 hours',
-    weight: '8 oz',
-  },
-    {
-    id: '58',
-    name: 'Wax Tablets',
-    description: 'Wax tablets are scented wax pieces that can be melted in a warmer to release fragrance, perfect for creating a cozy atmosphere without the flame.',
-
-    
-    price: 300,
-    image: wax3,
-    category: 'Floral',
-    fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
-    burnTime: '45-50 hours',
-    weight: '8 oz',
-  },
+  
    {
     id: '54',
     name: 'Metal Craft Candle',
