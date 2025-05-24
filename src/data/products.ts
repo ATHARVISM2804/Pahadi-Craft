@@ -76,9 +76,7 @@ import teracotta1 from '../Terracotta Candles/teracotta1.jpg'
 import teracotta2 from '../Terracotta Candles/teracotta2.jpg'
 import teracotta3 from '../Terracotta Candles/teracotta3.jpg'
 import teracotta4 from '../Terracotta Candles/teracotta4.jpg'
-import wax1 from '../Wax Tablets/wax1.jpg'
-import wax2 from '../wax Tablets/wax2.jpeg'
-import wax3 from '../wax Tablets/wax3.jpeg'
+
 
 
 
