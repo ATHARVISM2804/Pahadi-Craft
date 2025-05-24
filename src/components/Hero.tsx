@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Flame } from 'lucide-react';
 
+
 const Hero = () => {
   return (
     <div className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -53,17 +54,27 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Flame className="w-5 h-5 group-hover:animate-float" />
-              <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:scale-x-0 after:origin-right after:transition-transform group-hover:after:scale-x-100 group-hover:after:origin-left">
-                Shop Collection
-              </span>
+              <a
+  href="https://g.co/kgs/rYpv56Y"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group text-white"
+>
+  <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:scale-x-0 after:origin-right after:transition-transform group-hover:after:scale-x-100 group-hover:after:origin-left">
+    Shop Collection
+  </span>
+</a>
+
             </motion.button>
-            <motion.button 
+            <a href="https://www.pahadicraft.com/">
+              <motion.button 
               className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:shadow-lg backdrop-blur-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Custom Orders
             </motion.button>
+            </a>
           </motion.div>
         </motion.div>
       </div>

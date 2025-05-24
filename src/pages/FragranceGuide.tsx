@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { fragrances } from '../data/fragrances';
 
+
 const FragranceGuide = () => {
   return (
     <div className="min-h-screen pt-20 bg-[#FFF8F2]">

@@ -1,4 +1,7 @@
 import { Fragrance } from '../types';
+import amber from '../images1/amber.png';
+import linen from '../images1/linen.png';
+import forest from '../images1/forest walk.png';
 
 export const fragrances: Fragrance[] = [
   {
@@ -9,7 +12,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Vanilla Bean', 'Almond'],
     middleNotes: ['Tonka Bean', 'Coconut'],
     baseNotes: ['Amber', 'Musk'],
-    image: 'https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?q=80&w=2940&auto=format&fit=crop',
+    image: amber,
   },
   {
     id: '2',
@@ -19,7 +22,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Ozone', 'Citrus'],
     middleNotes: ['Cotton Blossom', 'Lily'],
     baseNotes: ['White Musk', 'Woody Notes'],
-    image: 'https://images.unsplash.com/photo-1585938389612-a552a28d6914?q=80&w=2940&auto=format&fit=crop',
+    image: linen,
   },
   {
     id: '3',
@@ -29,6 +32,6 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Pine Needles', 'Eucalyptus'],
     middleNotes: ['Cedar', 'Fir Balsam'],
     baseNotes: ['Moss', 'Woody Notes'],
-    image: 'https://images.unsplash.com/photo-1607892141389-3be8d54d00f0?q=80&w=2940&auto=format&fit=crop',
+    image: forest,
   },
 ];

@@ -112,21 +112,22 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-[#C9A66B]" />
                     <div>
                       <h3 className="font-serif text-[#5A4232] mb-1">Visit Us</h3>
-                      <p className="text-gray-600">123 Candle Street, NY 10001</p>
+                      <p className="text-gray-600">Ward No.06, Bharwain Road, Gagret Industrial Area, Mittal Udyog Colony, Gagret Industrial Area
+Gagret - 177201, Una, Himachal Pradesh, India</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <Phone className="w-6 h-6 text-[#C9A66B]" />
                     <div>
                       <h3 className="font-serif text-[#5A4232] mb-1">Call Us</h3>
-                      <p className="text-gray-600">(555) 123-4567</p>
+                      <p className="text-gray-600">(+91) 08048968949 </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
                     <Mail className="w-6 h-6 text-[#C9A66B]" />
                     <div>
                       <h3 className="font-serif text-[#5A4232] mb-1">Email Us</h3>
-                      <p className="text-gray-600">hello@candlelightduke.com</p>
+                      <p className="text-gray-600">candlelightduke@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">

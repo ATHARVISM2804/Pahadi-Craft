@@ -1,6 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Award, Users } from 'lucide-react';
+import aboutimg from '../images1/homedecor.png';
+import decor1 from '../Home Decor Candles/decor5.jpg';
+import decor2 from '../Home Decor Candles/decor6.jpg';
+import decor3 from '../Home Decor Candles/decor7.jpg';
+import craft from '../Metal Craft Candles/carft6.jpeg'
 
 const About = () => {
   return (
@@ -14,14 +19,15 @@ const About = () => {
           <div className="text-center mb-12">
             <h1 className="text-4xl font-serif text-[#5A4232] mb-4">Our Story</h1>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Founded in 2020, CandleLightDuke was born from a passion for creating beautiful, handcrafted candles that bring warmth and elegance to every home.
-            </p>
+              Established in the year of 2017, We “Pahadicraft” Wholesaler, Trader and Distributor of Decorative Candles, Scented Candles, Pillar Candles, Religious Candle, Healing Candle, Wax Candle, Figruine Candles, T Light Candle, Birthday Candle, Decorative Candle Jar, Aromatherapy Candles, Christmas Tree, Handmade Candle, Heart Shaped Candle, Mithai Candles, Gel Aroma Candle, Votive Candle and many more. We direct all our activities to cater the expectations of customers by providing them excellent quality products as per their gratification.
+            </p >
+            <p className="text-gray-600 max-w-2xl mx-auto">For our accomplishment story, we are grateful to Miss. Neety Arya, whose continual backing and direction have been useful to us for attaining exponential development in the current market.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div className="relative h-[400px] rounded-lg overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1602521879205-9e37c77c3077?q=80&w=2940&auto=format&fit=crop"
+                src={aboutimg}
                 alt="Candle making process"
                 className="w-full h-full object-cover"
               />
@@ -54,17 +60,17 @@ const About = () => {
                 {
                   title: 'Selection',
                   description: 'We carefully select the finest natural ingredients and premium fragrances.',
-                  image: 'https://images.unsplash.com/photo-1602521879205-9e37c77c3077?q=80&w=2940&auto=format&fit=crop',
+                  image: aboutimg,
                 },
                 {
                   title: 'Crafting',
                   description: 'Each candle is hand-poured with attention to detail and quality.',
-                  image: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?q=80&w=2940&auto=format&fit=crop',
+                  image: decor2,
                 },
                 {
                   title: 'Testing',
                   description: 'Rigorous quality control ensures the perfect burn and fragrance.',
-                  image: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?q=80&w=2940&auto=format&fit=crop',
+                  image: craft,
                 },
               ].map((step, index) => (
                 <div key={index} className="text-center">
