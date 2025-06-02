@@ -20,6 +20,8 @@ import AdminPanel from './components/admin/AdminPanel';
 import Auth from './components/Auth';
 import ProtectedRoute from './components/ProtectedRoute';
 
+
+
 function App() {
   return (
     <Router>
@@ -36,6 +38,10 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/auth" element={<Auth />} />
+        
+         
+
+          
           <Route
             path="/admin/*"
             element={

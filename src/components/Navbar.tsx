@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <Link 
             to="/" 
-            className="text-2xl font-serif text-[#5A4232] hover:text-[#C9A66B] transition-colors duration-300"
+            className="text-2xl font-serif text-[#3B2A1C]  hover:text-[#C9A66B] transition-colors duration-300"
           >
             <img className="h-20 w-auto ml-2   filter sepia brightness-90 hue-rotate-[10deg] saturate-200 drop-shadow-lg" src={icon1} alt="Icon" />
             {/* Pahadi Craft */}
@@ -61,7 +61,7 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className="relative text-[#5A4232] hover:text-[#C9A66B] transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#C9A66B] after:scale-x-0 after:origin-right after:transition-transform hover:after:scale-x-100 hover:after:origin-left"
+                className="relative text-[#3B2A1C]  hover:text-[#C9A66B] transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#C9A66B] after:scale-x-0 after:origin-right after:transition-transform hover:after:scale-x-100 hover:after:origin-left"
               >
                 {link.label}
               </Link>
@@ -69,7 +69,7 @@ const Navbar = () => {
             {user?.role === 'admin' && (
               <Link
                 to="/admin"
-                className="relative text-[#5A4232] hover:text-[#C9A66B] transition-colors duration-300"
+                className="relative text-[#3B2A1C]  hover:text-[#C9A66B] transition-colors duration-300"
               >
                 Admin
               </Link>
@@ -80,7 +80,7 @@ const Navbar = () => {
               onClick={() => setIsSearchOpen(true)}
               className="relative p-2 hover:bg-[#F5E9DA] rounded-full transition-colors duration-300"
             >
-              <Search className="w-6 h-6 text-[#5A4232]" />
+              <Search className="w-6 h-6 text-[#3B2A1C] " />
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -88,7 +88,7 @@ const Navbar = () => {
               onClick={toggleCart}
               className="relative p-2 hover:bg-[#F5E9DA] rounded-full transition-colors duration-300"
             >
-              <ShoppingBag className="w-6 h-6 text-[#5A4232]" />
+              <ShoppingBag className="w-6 h-6 text-[#3B2A1C] " />
               {items.length > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
@@ -106,9 +106,9 @@ const Navbar = () => {
               className="relative p-2 hover:bg-[#F5E9DA] rounded-full transition-colors duration-300"
             >
               {user ? (
-                <LogOut className="w-6 h-6 text-[#5A4232]" />
+                <LogOut className="w-6 h-6 text-[#3B2A1C] " />
               ) : (
-                <User className="w-6 h-6 text-[#5A4232]" />
+                <User className="w-6 h-6 text-[#3B2A1C] " />
               )}
             </motion.button>
           </div>

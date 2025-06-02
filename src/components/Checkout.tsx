@@ -4,10 +4,12 @@ import { useForm } from 'react-hook-form';
 import { useCartStore } from '../store/cartStore';
 import { Address } from '../types';
 
+
 const Checkout: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<Address>();
   const { items, total, clearCart } = useCartStore();
   const [isProcessing, setIsProcessing] = useState(false);
+
 
   const onSubmit = async (data: Address) => {
     setIsProcessing(true);
@@ -24,6 +26,7 @@ const Checkout: React.FC = () => {
     }
   };
 
+
   return (
     <div className="min-h-screen pt-20 bg-[#FFF8F2]">
       <div className="max-w-4xl mx-auto px-4 py-8">
@@ -33,6 +36,7 @@ const Checkout: React.FC = () => {
           className="bg-white rounded-lg shadow-sm p-6"
         >
           <h1 className="text-3xl font-serif text-[#5A4232] mb-8">Checkout</h1>
+
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
@@ -51,6 +55,7 @@ const Checkout: React.FC = () => {
                     <span className="text-red-500 text-sm">This field is required</span>
                   )}
                 </div>
+
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
@@ -75,6 +80,7 @@ const Checkout: React.FC = () => {
                   </div>
                 </div>
 
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -98,6 +104,7 @@ const Checkout: React.FC = () => {
                   </div>
                 </div>
 
+
                 <button
                   type="submit"
                   disabled={isProcessing}
@@ -109,6 +116,7 @@ const Checkout: React.FC = () => {
                 </button>
               </form>
             </div>
+
 
             <div>
               <h2 className="text-xl font-serif text-[#5A4232] mb-4">Order Summary</h2>
@@ -132,6 +140,7 @@ const Checkout: React.FC = () => {
                   </div>
                 ))}
 
+
                 <div className="border-t pt-4 mt-4">
                   <div className="flex justify-between text-lg font-medium">
                     <span>Total</span>
@@ -146,5 +155,6 @@ const Checkout: React.FC = () => {
     </div>
   );
 };
+
 
 export default Checkout;
