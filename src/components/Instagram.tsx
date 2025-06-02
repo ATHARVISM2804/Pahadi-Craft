@@ -5,6 +5,7 @@ import { Instagram as InstagramIcon } from 'lucide-react';
 import insta1 from '../images1/insta1.png';
 import insta2 from '../images1/insta2.png';
 import insta3 from '../images1/insta3.png';
+
 const instagramPosts = [
   {
     id: 1,
@@ -25,6 +26,8 @@ const instagramPosts = [
 ];
 
 const Instagram = () => {
+  const instagramLink = 'https://www.instagram.com/pahadi_craft?igsh=MWZja2s0cXNycTNnZA==';
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,7 +43,13 @@ const Instagram = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {instagramPosts.map((post) => (
-              <div key={post.id} className="relative aspect-square group overflow-hidden">
+              <a
+                key={post.id}
+                href={instagramLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative aspect-square group overflow-hidden block"
+              >
                 <img
                   src={post.image}
                   alt="Instagram post"
@@ -49,12 +58,14 @@ const Instagram = () => {
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <InstagramIcon className="w-8 h-8 text-white" />
                 </div>
-              </div>
+              </a>
             ))}
           </div>
           <div className="text-center mt-8">
             <a
-              href="#"
+              href={instagramLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-[#5A4232] hover:text-[#C9A66B] transition-colors"
             >
               <span>@PahadiCraft</span>

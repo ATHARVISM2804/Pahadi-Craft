@@ -19,7 +19,10 @@ import Contact from './pages/Contact';
 import AdminPanel from './components/admin/AdminPanel';
 import Auth from './components/Auth';
 import ProtectedRoute from './components/ProtectedRoute';
-
+import Shipping from './pages/Shipping';
+import Returns from './pages/Returns';
+import Faq from './pages/Faq';
+import CareGuide from './pages/CareGuide';
 
 
 function App() {
@@ -38,6 +41,10 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/shipping" element={<Shipping />} />
+          <Route path="/returns" element={<Returns />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/care-guide" element={<CareGuide />} />
         
          
 
