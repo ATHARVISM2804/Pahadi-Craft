@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Mail, Lock, User } from 'lucide-react';
-import { useAuthStore } from '../store/authStore';
+import { useAuthStore } from "../store/authStore";
 
 interface AuthFormData {
   email: string;
@@ -13,20 +13,38 @@ interface AuthFormData {
 
 const Auth: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const { register, handleSubmit, formState: { errors } } = useForm<AuthFormData>();
-  const { signIn, signUp } = useAuthStore();
+  const [errorMessage, setErrorMessage] = useState('');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<AuthFormData>();
+  const { signIn, signUp, signInWithGoogle } = useAuthStore();
   const navigate = useNavigate();
 
   const onSubmit = async (data: AuthFormData) => {
+    setErrorMessage('');
     try {
       if (isSignUp) {
-        await signUp(data);
+        await signUp({ email: data.email, password: data.password, name: data.name || '' });
       } else {
-        await signIn(data);
+        await signIn({ email: data.email, password: data.password });
       }
       navigate('/');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Authentication error:', error);
+      setErrorMessage(error.message || 'Authentication failed');
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    setErrorMessage('');
+    try {
+      await signInWithGoogle();
+      navigate('/');
+    } catch (error: any) {
+      console.error('Google Sign-In Error:', error);
+      setErrorMessage(error.message || 'Google Sign-In failed');
     }
   };
 
@@ -52,7 +70,7 @@ const Auth: React.FC = () => {
                 <input
                   {...register('name', { required: isSignUp })}
                   type="text"
-                  className="input pl-10"
+                  className="input pl-10 w-full border rounded px-3 py-2"
                   placeholder="Your name"
                 />
               </div>
@@ -71,7 +89,7 @@ const Auth: React.FC = () => {
               <input
                 {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
                 type="email"
-                className="input pl-10"
+                className="input pl-10 w-full border rounded px-3 py-2"
                 placeholder="your@email.com"
               />
             </div>
@@ -89,7 +107,7 @@ const Auth: React.FC = () => {
               <input
                 {...register('password', { required: true, minLength: 6 })}
                 type="password"
-                className="input pl-10"
+                className="input pl-10 w-full border rounded px-3 py-2"
                 placeholder="••••••••"
               />
             </div>
@@ -100,10 +118,34 @@ const Auth: React.FC = () => {
             )}
           </div>
 
-          <button type="submit" className="w-full btn btn-primary">
+          {errorMessage && (
+            <div className="text-red-500 text-sm text-center">{errorMessage}</div>
+          )}
+
+          <button
+            type="submit"
+            className="w-full bg-[#C9A66B] hover:bg-[#5A4232] text-white py-2 rounded transition duration-300"
+          >
             {isSignUp ? 'Sign Up' : 'Sign In'}
           </button>
         </form>
+
+        <div className="mt-4 text-center text-gray-600 text-sm">or</div>
+
+        <div className="mt-4">
+          <button
+            type="button"
+            onClick={handleGoogleSignIn}
+            className="w-full border border-gray-300 flex items-center justify-center gap-2 py-2 rounded hover:bg-gray-100 transition duration-300"
+          >
+            <img
+              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              alt="Google"
+              className="w-5 h-5"
+            />
+            Sign in with Google
+          </button>
+        </div>
 
         <div className="mt-6 text-center">
           <button
@@ -121,3 +163,4 @@ const Auth: React.FC = () => {
 };
 
 export default Auth;
+

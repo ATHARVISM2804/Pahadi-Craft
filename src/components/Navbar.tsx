@@ -26,7 +26,8 @@ const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
   const toggleCart = useCartStore((state) => state.toggleCart);
   const items = useCartStore((state) => state.items);
-  const { user, signOut } = useAuthStore();
+  const user = useAuthStore((state) => state.user);
+  const signOut = useAuthStore((state) => state.signOut);
   const navigate = useNavigate();
 
   const handleAuthClick = () => {

@@ -23,6 +23,7 @@ import Shipping from './pages/Shipping';
 import Returns from './pages/Returns';
 import Faq from './pages/Faq';
 import CareGuide from './pages/CareGuide';
+import Dashboard from './pages/Dashboard';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path="/returns" element={<Returns />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/care-guide" element={<CareGuide />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         
          
 
