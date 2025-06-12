@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const CustomOrder = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     fragrance: '',
     size: '8oz',
@@ -13,8 +16,18 @@ const CustomOrder = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+
+    const body = `
+      Fragrance: ${formData.fragrance}
+      Size: ${formData.size}
+      Container: ${formData.container}
+      Custom Label Text: ${formData.label}
+      Quantity: ${formData.quantity}
+      Special Instructions: ${formData.specialInstructions}
+    `;
+
+    // Send email using user's email client
+    window.location.href = `mailto:pahadicraft@gmail.com?subject=Custom Candle Order&body=${encodeURIComponent(body)}`;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -41,9 +54,7 @@ const CustomOrder = () => {
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-[#5A4232] font-serif mb-2">
-                    Fragrance
-                  </label>
+                  <label className="block text-[#5A4232] font-serif mb-2">Fragrance</label>
                   <input
                     type="text"
                     name="fragrance"
@@ -55,9 +66,7 @@ const CustomOrder = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[#5A4232] font-serif mb-2">
-                    Size
-                  </label>
+                  <label className="block text-[#5A4232] font-serif mb-2">Size</label>
                   <select
                     name="size"
                     value={formData.size}
@@ -72,9 +81,7 @@ const CustomOrder = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[#5A4232] font-serif mb-2">
-                    Container
-                  </label>
+                  <label className="block text-[#5A4232] font-serif mb-2">Container</label>
                   <select
                     name="container"
                     value={formData.container}
@@ -88,9 +95,7 @@ const CustomOrder = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[#5A4232] font-serif mb-2">
-                    Custom Label Text
-                  </label>
+                  <label className="block text-[#5A4232] font-serif mb-2">Custom Label Text</label>
                   <input
                     type="text"
                     name="label"
@@ -102,9 +107,7 @@ const CustomOrder = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[#5A4232] font-serif mb-2">
-                    Quantity
-                  </label>
+                  <label className="block text-[#5A4232] font-serif mb-2">Quantity</label>
                   <input
                     type="number"
                     name="quantity"
@@ -116,9 +119,7 @@ const CustomOrder = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[#5A4232] font-serif mb-2">
-                    Special Instructions
-                  </label>
+                  <label className="block text-[#5A4232] font-serif mb-2">Special Instructions</label>
                   <textarea
                     name="specialInstructions"
                     value={formData.specialInstructions}
@@ -166,7 +167,10 @@ const CustomOrder = () => {
                 <p className="mb-4">
                   Our fragrance experts are here to help you create the perfect custom candle. Contact us for guidance and suggestions.
                 </p>
-                <button className="bg-white text-[#5A4232] px-6 py-2 rounded-full hover:bg-[#F5E9DA] transition-colors">
+                <button
+                  onClick={() => navigate('/contact')}
+                  className="bg-white text-[#5A4232] px-6 py-2 rounded-full hover:bg-[#F5E9DA] transition-colors"
+                >
                   Contact Us
                 </button>
               </div>

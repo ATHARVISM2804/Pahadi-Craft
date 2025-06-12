@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShoppingBag, Plus, Minus, Trash2 } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
+import qrscan from '../assets/qr scanner.jpg'; // QR code image
 
 const Cart = () => {
-  const { items, isOpen, toggleCart, removeItem, updateQuantity, total } = useCartStore();
+  const {
+    items,
+    isOpen,
+    toggleCart,
+    removeItem,
+    updateQuantity,
+    getTotal,
+    clearCart, // ✅ Add clearCart from your store
+  } = useCartStore();
+
+  const [showQR, setShowQR] = useState(false);
+
+  const handleCheckout = () => {
+    setShowQR(true);
+  };
 
   return (
     <AnimatePresence>
@@ -61,7 +76,9 @@ const Cart = () => {
                       />
                       <div className="flex-1">
                         <h3 className="font-serif text-[#5A4232]">{item.product.name}</h3>
-                        <p className="text-[#C9A66B] font-semibold">${item.product.price}</p>
+                        <p className="text-[#C9A66B] font-semibold">
+                          ₹{item.product.price}
+                        </p>
                         <div className="flex items-center gap-2 mt-2">
                           <button
                             onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
@@ -91,17 +108,51 @@ const Cart = () => {
             </div>
 
             {items.length > 0 && (
-              <div className="border-t border-gray-200 p-4">
-                <div className="flex justify-between mb-4">
+              <div className="border-t border-gray-200 p-4 space-y-3">
+                <div className="flex justify-between">
                   <span className="font-serif text-[#5A4232]">Total</span>
-                  <span className="font-semibold text-[#5A4232]">${total.toFixed(2)}</span>
+                  <span className="font-semibold text-[#5A4232]">
+                    ₹{getTotal().toFixed(2)}
+                  </span>
                 </div>
-                <button className="w-full bg-[#C9A66B] text-white py-3 rounded-full hover:bg-[#5A4232] transition-colors">
+                <button
+                  onClick={handleCheckout}
+                  className="w-full bg-[#C9A66B] text-white py-3 rounded-full hover:bg-[#5A4232] transition-colors"
+                >
                   Checkout
+                </button>
+                <button
+                  onClick={clearCart}
+                  className="w-full bg-red-100 text-red-700 py-2 rounded-full hover:bg-red-200 transition-colors text-sm"
+                >
+                  Clear Cart
                 </button>
               </div>
             )}
           </motion.div>
+
+          {/* QR Scanner Popup */}
+          {showQR && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center"
+              onClick={() => setShowQR(false)}
+            >
+              <div className="bg-white rounded-xl p-6 max-w-sm shadow-xl">
+                <h3 className="text-lg font-semibold text-center text-[#5A4232] mb-4">
+                  Scan to Pay ₹{getTotal().toFixed(2)}
+                </h3>
+                <img
+                  src={qrscan}
+                  alt="Scan to Pay"
+                  className="w-full h-auto rounded-lg"
+                />
+                <p className="text-sm text-gray-500 text-center mt-2">Tap anywhere to close</p>
+              </div>
+            </motion.div>
+          )}
         </>
       )}
     </AnimatePresence>
@@ -109,3 +160,5 @@ const Cart = () => {
 };
 
 export default Cart;
+
+

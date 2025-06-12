@@ -19,91 +19,91 @@ const products = [
   {
     id: 1,
     name: 'Jar Candles',
-    price: 300,
+   
     image: jarcandles,
     rating: 5,
   },
   {
     id: 2,
     name: 'Metal Craft Candles',
-    price: 300,
+    
     image: metalcraft,
     rating: 4,
   },
   {
     id: 3,
     name: 'Halloween Candles',
-    price: 300,
+    
     image: halloween,
     rating: 5,
   },
   {
     id: 4,
     name: 'Vallentine Candles',
-    price: 300,
+   
     image: valentine,
     rating: 5,
   },
   {
     id: 5,
     name: 'piller Candles',
-    price: 300,
+    
     image: piller,
     rating: 5,
   },
   {
     id: 6,
     name: 'Teracotta Candles',
-    price: 300,
+    
     image: teracotta,
     rating: 5,
   },
   {
     id: 7,
     name: 'Bath Salt Candles',
-    price: 300,
+    
     image: bathsalt,
     rating: 5,
   },
   {
     id: 8,
     name: 'Home Decor Candles',
-    price: 300,
+    
     image: homedecor,
     rating: 5,
   },
   {
     id: 9,
     name: 'Ceramic Jars Candles',
-    price: 300,
+    
     image: ceramicsjars,
     rating: 5,
   },
   {
     id: 10,
     name: 'Medicinal Oils ',
-    price: 300,
+    
     image: medicinaloils,
     rating: 5,
   },
   {
     id: 11,
     name: 'Pinecones Candles',
-    price: 300,
+    
     image: pinecones,
     rating: 5,
   },
   {
     id: 12,
     name: 'Resin Heart Candles',
-    price: 300,
+    
     image: resinheart,
     rating: 5,
   },
   {
     id: 13,
     name: 'Resin Tray Candles',
-    price: 300,
+    
     image: resintray,
     rating: 5,
   },
@@ -132,7 +132,7 @@ const FeaturedProducts = () => {
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
                     <h3 className="text-xl font-serif text-white">{product.name}</h3>
                     <div className="flex items-center justify-between mt-2">
-                      <p className="text-white font-semibold">₹{product.price}</p>
+                      
                       <div className="flex">
                         {[...Array(product.rating)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 text-[#C9A66B] fill-current" />

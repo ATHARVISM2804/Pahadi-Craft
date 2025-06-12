@@ -55,7 +55,7 @@ const Hero = () => {
             >
               <Flame className="w-5 h-5 group-hover:animate-float" />
               <a
-  href="https://g.co/kgs/rYpv56Y"
+  href="https://www.pahadicraft.com/"
   target="_blank"
   rel="noopener noreferrer"
   className="group text-white"
@@ -66,13 +66,13 @@ const Hero = () => {
 </a>
 
             </motion.button>
-            <a href="https://www.pahadicraft.com/">
+            <a href="https://g.co/kgs/rYpv56Y">
               <motion.button 
               className="px-8 py-3 bg-transparent border-2 border-white text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:shadow-lg backdrop-blur-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Custom Orders
+              Explore More 
             </motion.button>
             </a>
           </motion.div>

@@ -6,11 +6,11 @@ const ContactSlider = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleWhatsApp = () => {
-    window.open('https://wa.me/1234567890', '_blank');
+    window.open('https://wa.me/917660077316', '_blank');
   };
 
   const handleCall = () => {
-    window.location.href = 'tel:8329310930';
+    window.location.href = 'tel:7660077316';
   };
 
   return (
