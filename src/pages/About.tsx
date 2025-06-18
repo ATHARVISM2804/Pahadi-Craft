@@ -16,13 +16,18 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-serif text-[#5A4232] mb-4">Our Story</h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Established in the year of 2017, We “Pahadicraft” Wholesaler, Trader and Distributor of Decorative Candles, Scented Candles, Pillar Candles, Religious Candle, Healing Candle, Wax Candle, Figruine Candles, T Light Candle, Birthday Candle, Decorative Candle Jar, Aromatherapy Candles, Christmas Tree, Handmade Candle, Heart Shaped Candle, Mithai Candles, Gel Aroma Candle, Votive Candle and many more. We direct all our activities to cater the expectations of customers by providing them excellent quality products as per their gratification.
-            </p >
-            <p className="text-gray-600 max-w-2xl mx-auto">For our accomplishment story, we are grateful to Miss. Neety Arya, whose continual backing and direction have been useful to us for attaining exponential development in the current market.</p>
-          </div>
+          <div className="text-center mb-16 px-4 sm:px-6 lg:px-8">
+  <h1 className="text-4xl sm:text-5xl font-serif text-[#5A4232] mb-6">Our Story</h1>
+  
+  <p className="text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed mb-4">
+    Established in the year 2017, we at <span className="font-semibold text-[#5A4232]">Pahadicraft</span> are proud to be a trusted Wholesaler, Trader, and Distributor of a wide variety of exquisite candles and home decor items. Our collection includes Decorative Candles, Scented Candles, Pillar Candles, Religious Candles, Healing Candles, Wax Candles, Figurine Candles, T-Light Candles, Birthday Candles, Decorative Candle Jars, Aromatherapy Candles, Christmas Trees, Handmade Candles, Heart-Shaped Candles, Mithai Candles, Gel Aroma Candles, Votive Candles, and many more.
+  </p>
+
+  <p className="text-gray-700 max-w-3xl mx-auto text-lg leading-relaxed">
+    We strive to exceed customer expectations by delivering premium-quality products tailored to their satisfaction. Our journey and success are greatly attributed to <span className="font-medium text-[#5A4232]">Miss Neety Arya</span>, whose constant guidance and support have been instrumental in our exponential growth in today’s market.
+  </p>
+</div>
+
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div className="relative h-[400px] rounded-lg overflow-hidden">

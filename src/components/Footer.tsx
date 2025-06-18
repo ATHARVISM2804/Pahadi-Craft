@@ -13,16 +13,22 @@ const Footer = () => {
               Illuminating spaces with handcrafted elegance since 2020.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-[#C9A66B] transition-colors">
-                <Facebook className="w-6 h-6" />
-              </a>
-              <a href="#" className="hover:text-[#C9A66B] transition-colors">
-                <Instagram className="w-6 h-6" />
-              </a>
-              <a href="#" className="hover:text-[#C9A66B] transition-colors">
-                <Twitter className="w-6 h-6" />
-              </a>
-            </div>
+  <a href="#" className="hover:text-[#C9A66B] transition-colors">
+    <Facebook className="w-6 h-6" />
+  </a>
+  <a
+    href="https://www.instagram.com/pahadi_craft?igsh=MWZja2s0cXNycTNnZA=="
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-[#C9A66B] transition-colors"
+  >
+    <Instagram className="w-6 h-6" />
+  </a>
+  <a href="#" className="hover:text-[#C9A66B] transition-colors">
+    <Twitter className="w-6 h-6" />
+  </a>
+</div>
+
           </div>
 
           <div>
@@ -75,7 +81,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-[#C9A66B]" />
-                <span>candlelightduke@gmail.com</span>
+                <span>pahadicraft@gmail.com</span>
               </li>
             </ul>
           </div>
