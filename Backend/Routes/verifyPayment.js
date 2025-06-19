@@ -14,10 +14,10 @@ router.post('/', async (req, res) => {
     firebaseUser, // Rename from user to firebaseUser to avoid conflict
   } = req.body;
 
-  console.log("Payment Verification Request:", {
-    orderDetails: userDetails,
-    firebase: firebaseUser
-  });
+  // console.log("Payment Verification Request:", {
+  //   orderDetails: userDetails,
+  //   firebase: firebaseUser
+  // });
 
   const body = `${razorpay_order_id}|${razorpay_payment_id}`;
   const expectedSignature = crypto

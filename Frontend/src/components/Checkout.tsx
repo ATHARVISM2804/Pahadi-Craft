@@ -56,11 +56,11 @@ const Checkout: React.FC = () => {
 
     setIsPaying(true);
     try {
-      const res = await fetch('http://localhost:5000/api/create-order', {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/create-order`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${await user.getIdToken()}` // Add Firebase token
+          'Authorization': `Bearer ${await user.getIdToken()}`
         },
         body: JSON.stringify({ 
           amount: getTotal(),
@@ -90,7 +90,7 @@ const Checkout: React.FC = () => {
         order_id: orderData.id,
         handler: async (response: any) => {
           try {
-            const verifyRes = await fetch('http://localhost:5000/api/verify-payment', {
+            const verifyRes = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/verify-payment`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({

@@ -24,6 +24,12 @@ const UserProfile = () => {
   const [error, setError] = useState('');
   const [expandedOrderId, setExpandedOrderId] = useState<string | null>(null); // State to track expanded order
   const [profileUpdateMsg, setProfileUpdateMsg] = useState<string | null>(null);
+  const [phone, setPhone] = useState(user?.phoneNumber || '');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [stateField, setStateField] = useState('');
+  const [zip, setZip] = useState('');
+  const [country, setCountry] = useState('');
   const defaultAvatar = '/default-avatar.png';
   const navigate = useNavigate();
 
@@ -32,21 +38,25 @@ const UserProfile = () => {
       navigate('/auth');
       return;
     }
-    if (user?.displayName) {
-      setDisplayName(user.displayName);
-    }
-    if (user?.photoURL) {
-      setPhotoURL(user.photoURL);
-    }
+    if (user?.displayName) setDisplayName(user.displayName);
+    if (user?.photoURL) setPhotoURL(user.photoURL);
+    if (user?.phoneNumber) setPhone(user.phoneNumber);
+
+    // Optionally fetch user profile details from backend and set address fields here
 
     // Save user to backend on login
     if (user) {
-      axios.post('http://localhost:5000/api/user/save', {
+      axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/user/save`, {
         uid: user.uid,
         email: user.email,
         name: user.displayName,
         photo: user.photoURL,
-        phone: user.phoneNumber
+        phone: user.phoneNumber,
+        address,
+        city,
+        state: stateField,
+        zip,
+        country
       }).catch((err) => {
         console.error('Failed to save user:', err);
       });
@@ -68,7 +78,7 @@ const UserProfile = () => {
     setError('');
     
     try {
-      const response = await axios.get(`http://localhost:5000/api/orders/me/${user.uid}`);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/orders/me/${user.uid}`);
       setOrders(response.data.orders);
     } catch (err) {
       console.error('Error fetching orders:', err);
@@ -84,6 +94,11 @@ const UserProfile = () => {
     name: string;
     photo: string;
     phone?: string;
+    address?: string;
+    city?: string;
+    state?: string;
+    zip?: string;
+    country?: string;
   }) => {
     try {
       const res = await axios.post('http://localhost:5000/api/user/save', data);
@@ -104,12 +119,24 @@ const UserProfile = () => {
     // Reset fields to current user values
     setDisplayName(user.displayName || '');
     setPhotoURL(user.photoURL || '');
+    setPhone(user.phoneNumber || '');
+    setAddress('');
+    setCity('');
+    setStateField('');
+    setZip('');
+    setCountry('');
   };
 
   const handleProfileUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     setProfileUpdateMsg(null);
     if (!displayName.trim()) return;
+
+    // Allow any http(s) image link, block only data URLs
+    if (photoURL.startsWith('data:')) {
+      setProfileUpdateMsg('Please use a direct image link (http/https), not a data URL.');
+      return;
+    }
 
     try {
       await updateUserProfile({ displayName, photoURL });
@@ -118,11 +145,24 @@ const UserProfile = () => {
         email: user.email,
         name: displayName,
         photo: photoURL,
-        phone: user.phoneNumber
+        phone,
+        address,
+        city,
+        state: stateField,
+        zip,
+        country
       });
       if (backendRes && backendRes.user) {
         setDisplayName(backendRes.user.name || '');
         setPhotoURL(backendRes.user.photo || '');
+        setPhone(backendRes.user.phone || '');
+        setAddress(backendRes.user.address || '');
+        setCity(backendRes.user.city || '');
+        setStateField(backendRes.user.state || '');
+        setZip(backendRes.user.zip || '');
+        setCountry(backendRes.user.country || '');
+        // Optionally force reload to update user context everywhere:
+        // window.location.reload();
       }
       setIsEditing(false);
       setProfileUpdateMsg('Profile updated successfully!');
@@ -318,6 +358,88 @@ const UserProfile = () => {
                         placeholder="Enter photo URL"
                         disabled={!isEditing}
                       />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Phone
+                      </label>
+                      <input
+                        type="text"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        className="w-full px-4 py-2 border rounded-md"
+                        placeholder="Enter phone number"
+                        disabled={!isEditing}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Address
+                      </label>
+                      <input
+                        type="text"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        className="w-full px-4 py-2 border rounded-md"
+                        placeholder="Enter address"
+                        disabled={!isEditing}
+                      />
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          City
+                        </label>
+                        <input
+                          type="text"
+                          value={city}
+                          onChange={(e) => setCity(e.target.value)}
+                          className="w-full px-4 py-2 border rounded-md"
+                          placeholder="Enter city"
+                          disabled={!isEditing}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          State
+                        </label>
+                        <input
+                          type="text"
+                          value={stateField}
+                          onChange={(e) => setStateField(e.target.value)}
+                          className="w-full px-4 py-2 border rounded-md"
+                          placeholder="Enter state"
+                          disabled={!isEditing}
+                        />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Zip
+                        </label>
+                        <input
+                          type="text"
+                          value={zip}
+                          onChange={(e) => setZip(e.target.value)}
+                          className="w-full px-4 py-2 border rounded-md"
+                          placeholder="Enter zip"
+                          disabled={!isEditing}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          Country
+                        </label>
+                        <input
+                          type="text"
+                          value={country}
+                          onChange={(e) => setCountry(e.target.value)}
+                          className="w-full px-4 py-2 border rounded-md"
+                          placeholder="Enter country"
+                          disabled={!isEditing}
+                        />
+                      </div>
                     </div>
                     {profileUpdateMsg && (
                       <div className={`text-sm ${profileUpdateMsg.includes('success') ? 'text-green-600' : 'text-red-500'}`}>
