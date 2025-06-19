@@ -16,7 +16,7 @@ const Cart = () => {
     getTotal,
     clearCart,
   } = useCartStore();
-  const { user, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   // ✅ Load Razorpay script once

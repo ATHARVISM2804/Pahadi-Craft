@@ -4,8 +4,23 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const createOrder = require('./Routes/createOrder');
 const verifyPayment = require('./Routes/verifyPayment');
+const orders = require('./Routes/orders');
+const userRoute = require('./Routes/user.route');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 dotenv.config();
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('✅ MongoDB connected'))
+.catch((err) => console.error('❌ MongoDB connection error:', err));
+
+
+
 
 const app = express();
 app.use(cors({
@@ -26,6 +41,8 @@ app.use((err, req, res, next) => {
 
 app.use('/api/create-order', createOrder);
 app.use('/api/verify-payment', verifyPayment);
+app.use('/api/orders', orders);
+app.use('/api/user', userRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -14,6 +14,9 @@ interface RazorpayOptions {
   theme: {
     color: string;
   };
+  notes: {
+    firebaseUid: string;
+  };
 }
 
 interface RazorpayResponse {

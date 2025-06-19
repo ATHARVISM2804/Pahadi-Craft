@@ -1,0 +1,48 @@
+{
+  razorpay_payment_id: 'pay_Qj5t3Gd3a2SHW1',
+  razorpay_order_id: 'order_Qj5swFyeEj61xR',
+  razorpay_signature: 'b5bd13821f7c2fdf160203a7de308cf59c48c627bddd60382f3e03e68bba625b',
+  userDetails: {
+    name: 'Ashish Ranjan',
+    phone: '9934225353',
+    address: 'NIT Hamirpur\nKailash Boys Hostel',
+    city: 'Hamirpur',
+    state: 'Himachal Pradesh',
+    zip: '177005',
+    country: 'India',
+    amount: 370,
+    items: [ [Object] ]
+  }
+}
+
+
+
+---- Fire base User -----
+
+{
+  uid: '5eSQ2fwaV0gPHfFWeAaZ7wLg4483',
+  email: 'ranjanashish9992@gmail.com',
+  emailVerified: true,
+  displayName: 'Ashish Ranjan',
+  isAnonymous: false,
+  photoURL: 'https://lh3.googleusercontent.com/a/ACg8ocK2hezYcevhkKej1KdZmlq4AsX5zW0fintJH5JhaTH_X-Cp2Lzy=s96-c',
+  providerData: [
+    {
+      providerId: 'google.com',
+      uid: '109785453981765381047',
+      displayName: 'Ashish Ranjan',
+      email: 'ranjanashish9992@gmail.com',
+      phoneNumber: null,
+      photoURL: 'https://lh3.googleusercontent.com/a/ACg8ocK2hezYcevhkKej1KdZmlq4AsX5zW0fintJH5JhaTH_X-Cp2Lzy=s96-c'
+    }
+  ],
+  stsTokenManager: {
+    refreshToken: 'AMf-vBxiPUjTK7CuE-W4lSEsW8WWQ6hLP9CwGZJiIIC2CqDAvULvl-L-mVr2RcI7kfZO-TQZSa2f6UuEnlzAwjS6TpX0N9_IRM9CQjw0lGTpSen7x0qhCx7eAHeUe4L0ZdjF5DrErszfjoblPjBQd8tIErXxcbnPWo6juA0VT1RPkRzWu8Sg9MnS3tpZAiHkAcipcdtg7-0CVyx1rAyIp0-elkKsffzYRaiGR7lGyAJ4F3NpOcXOLyBNKZCwhQf4dFBPqR0MOR2U1ehSDkesinQC6R-9Nz-jrLSJ9kBSB_MYh3HCyV4SbQSINdPL6-fgSyfWjQUgnc6aB71M-HRSh2RJrgsUStgVlqCsi38ry8DsfkxN5AKu2ry1p1_G-41VJKdYr5e-dD0uBQOK3IwxJZnPcDJ_pp4WPRqAlVRm4E2AbQGMpiBKzQIQgS_b3Pfaczms__uVPUJR',
+    accessToken: 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImE0YTEwZGVjZTk4MzY2ZDZmNjNlMTY3Mjg2YWU5YjYxMWQyYmFhMjciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQXNoaXNoIFJhbmphbiIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NLMmhlelljZXZoa0tlajFLZFptbHE0QXNYNXpXMGZpbnRKSDVKaGFUSF9YLUNwMkx6eT1zOTYtYyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9wYWhhZGljcmFmdC01YmQ2OSIsImF1ZCI6InBhaGFkaWNyYWZ0LTViZDY5IiwiYXV0aF90aW1lIjoxNzUwMzQ0NTUxLCJ1c2VyX2lkIjoiNWVTUTJmd2FWMGdQSGZGV2VBYVo3d0xnNDQ4MyIsInN1YiI6IjVlU1EyZndhVjBnUEhmRldlQWFaN3dMZzQ0ODMiLCJpYXQiOjE3NTAzNDQ1NTEsImV4cCI6MTc1MDM0ODE1MSwiZW1haWwiOiJyYW5qYW5hc2hpc2g5OTkyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTA5Nzg1NDUzOTgxNzY1MzgxMDQ3Il0sImVtYWlsIjpbInJhbmphbmFzaGlzaDk5OTJAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.LC_pHrMPaLmyYyab2OWocsJuNgLyzZbZgmKDA6MlXIuhHY2743XjNR3q8YsoAXEEwUZ8OF9JYqv-aMAk1D7VOAeqXCreLP6CssuT1tURsD_6yQIk7yEfnv6oWgZ4EP5aMIfMB5qOKea30jGwrE_4J-ozW8DHIEdObgMc9Q8Q08bqFPN_LTzAsFyT1djhZEbYpWXJzAptQ8QVR37ad2YpzyijtSk9O3CVE6CyEALR3nVJcMcXQHoajNbLuaVcwhdqx2bbdPy5JnW8oIwawpeQhTcD4DKTIJTpOSpq6PDe4O_IDzWg7thJvL9dy417v4GO1Fpz7R-4gndzpRP6LOOxTg',
+    expirationTime: 1750348150396
+  },
+  createdAt: '1750261654992',
+  lastLoginAt: '1750344551055',
+  apiKey: 'AIzaSyCURXZcdLisocimmRqhqoLDIljPRiHLyuY',
+  appName: '[DEFAULT]'
+}

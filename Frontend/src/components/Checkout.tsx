@@ -48,12 +48,24 @@ const Checkout: React.FC = () => {
       return;
     }
 
+    if (!user?.uid) {
+      alert('Authentication required');
+      navigate('/auth');
+      return;
+    }
+
     setIsPaying(true);
     try {
       const res = await fetch('http://localhost:5000/api/create-order', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${await user.getIdToken()}` // Add Firebase token
+        },
+        body: JSON.stringify({ 
+          amount: getTotal(),
+          // firebaseUser: user // Include Firebase UID
+        }),
         credentials: 'include',
       });
 
@@ -72,7 +84,8 @@ const Checkout: React.FC = () => {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID,
         amount: orderData.amount,
         currency: orderData.currency,
-        name: 'Your Brand Name',
+        userDetails: orderData.firebaseUser,
+        name: 'Pahadi Craft',
         description: 'Order Payment',
         order_id: orderData.id,
         handler: async (response: any) => {
@@ -80,13 +93,17 @@ const Checkout: React.FC = () => {
             const verifyRes = await fetch('http://localhost:5000/api/verify-payment', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(response),
+              body: JSON.stringify({
+                ...response,
+                firebaseUser: user, // Add the Firebase user object
+                userDetails: {
+                  ...form,
+                  amount: getTotal(),
+                  items: items
+                }
+              }),
               credentials: 'include',
             });
-
-            if (!verifyRes.ok) {
-              throw new Error('Payment verification failed');
-            }
 
             const result = await verifyRes.json();
             if (result.success) {
@@ -260,3 +277,4 @@ const Checkout: React.FC = () => {
 };
 
 export default Checkout;
+

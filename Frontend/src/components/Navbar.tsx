@@ -31,7 +31,7 @@ const Navbar = () => {
 
   const handleAuthClick = async () => {
     if (isAuthenticated) {
-      navigate('/user');
+      navigate('/profile');
     } else {
       navigate('/auth');
     }

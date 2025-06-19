@@ -1,5 +1,6 @@
 const express = require('express');
 const Razorpay = require('razorpay');
+const User = require('../models/User');
 require('dotenv').config();
 
 const router = express.Router();
@@ -27,6 +28,7 @@ razorpay.orders.all()
 router.post('/', async (req, res) => {
   const { amount } = req.body;
 
+  // console.log("Firebase UID:", firebaseUid);
   if (!amount || amount <= 0) {
     return res.status(400).json({ error: 'Invalid amount' });
   }

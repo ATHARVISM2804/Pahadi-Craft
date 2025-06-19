@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
@@ -24,8 +23,8 @@ import Returns from './pages/Returns';
 import Faq from './pages/Faq';
 import CareGuide from './pages/CareGuide';
 import Dashboard from './pages/Dashboard';
-import UserProfile from './pages/UserProfile';
 import Checkout from './components/Checkout';
+import UserProfile from './pages/UserProfile';
 
 
 function App() {
@@ -49,7 +48,7 @@ function App() {
           <Route path="/faq" element={<Faq />} />
           <Route path="/care-guide" element={<CareGuide />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path='/user' element={<UserProfile />} />
+          <Route path='/profile' element={<UserProfile />} />
           <Route path='/checkout' element={<Checkout />} />
 
           <Route

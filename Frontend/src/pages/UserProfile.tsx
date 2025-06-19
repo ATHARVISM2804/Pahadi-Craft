@@ -1,12 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import axios from 'axios';
+
+// Add these interfaces
+interface Order {
+  _id: string;
+  orderAmount: number;
+  orderStatus: string;
+  createdAt: string;
+  items?: { name: string; quantity: number; price: number }[]; // Add items field for order details
+  totalAmount?: number; // Add totalAmount field if needed
+}
 
 const UserProfile = () => {
   const { user, isAuthenticated, logout, updateUserProfile } = useAuth();
   const [activeTab, setActiveTab] = useState(0);
   const [isEditing, setIsEditing] = useState(false);
   const [displayName, setDisplayName] = useState('');
+  const [photoURL, setPhotoURL] = useState('');
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [expandedOrderId, setExpandedOrderId] = useState<string | null>(null); // State to track expanded order
+  const [profileUpdateMsg, setProfileUpdateMsg] = useState<string | null>(null);
+  const defaultAvatar = '/default-avatar.png';
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,6 +34,22 @@ const UserProfile = () => {
     }
     if (user?.displayName) {
       setDisplayName(user.displayName);
+    }
+    if (user?.photoURL) {
+      setPhotoURL(user.photoURL);
+    }
+
+    // Save user to backend on login
+    if (user) {
+      axios.post('http://localhost:5000/api/user/save', {
+        uid: user.uid,
+        email: user.email,
+        name: user.displayName,
+        photo: user.photoURL,
+        phone: user.phoneNumber
+      }).catch((err) => {
+        console.error('Failed to save user:', err);
+      });
     }
   }, [isAuthenticated, navigate, user]);
 
@@ -28,17 +62,81 @@ const UserProfile = () => {
     }
   };
 
-  const handleProfileUpdate = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!displayName.trim()) return;
+  const fetchOrders = async () => {
+    if (!user) return;
+    setIsLoading(true);
+    setError('');
     
     try {
-      await updateUserProfile({ displayName });
-      setIsEditing(false);
-    } catch (error) {
-      console.error('Profile update failed:', error);
+      const response = await axios.get(`http://localhost:5000/api/orders/me/${user.uid}`);
+      setOrders(response.data.orders);
+    } catch (err) {
+      console.error('Error fetching orders:', err);
+      setError('Failed to fetch orders');
+    } finally {
+      setIsLoading(false);
     }
   };
+
+  const updateUserProfileBackend = async (data: {
+    uid: string;
+    email: string;
+    name: string;
+    photo: string;
+    phone?: string;
+  }) => {
+    try {
+      const res = await axios.post('http://localhost:5000/api/user/save', data);
+      return res.data;
+    } catch (err) {
+      throw err;
+    }
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+    setProfileUpdateMsg(null);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+    setProfileUpdateMsg(null);
+    // Reset fields to current user values
+    setDisplayName(user.displayName || '');
+    setPhotoURL(user.photoURL || '');
+  };
+
+  const handleProfileUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setProfileUpdateMsg(null);
+    if (!displayName.trim()) return;
+
+    try {
+      await updateUserProfile({ displayName, photoURL });
+      const backendRes = await updateUserProfileBackend({
+        uid: user.uid,
+        email: user.email,
+        name: displayName,
+        photo: photoURL,
+        phone: user.phoneNumber
+      });
+      if (backendRes && backendRes.user) {
+        setDisplayName(backendRes.user.name || '');
+        setPhotoURL(backendRes.user.photo || '');
+      }
+      setIsEditing(false);
+      setProfileUpdateMsg('Profile updated successfully!');
+    } catch (error) {
+      console.error('Profile update failed:', error);
+      setProfileUpdateMsg('Failed to update profile.');
+    }
+  };
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      fetchOrders();
+    }
+  }, [isAuthenticated, user]);
 
   if (!isAuthenticated || !user) return null;
 
@@ -50,8 +148,12 @@ const UserProfile = () => {
             <div className="flex flex-col items-center">
               <img 
                 className="w-32 h-32 rounded-full mb-4 object-cover"
-                src={user.photoURL || '/default-avatar.png'} 
-                alt={user.displayName || 'User'} 
+                src={photoURL || defaultAvatar}
+                alt={displayName || 'User'} 
+                onError={(e) => {
+                  e.currentTarget.src = defaultAvatar;
+                  console.log('Failed to load image:', photoURL);
+                }}
               />
               <h2 className="text-xl font-semibold mb-2">
                 {user.displayName || 'Anonymous User'}
@@ -108,8 +210,65 @@ const UserProfile = () => {
               {activeTab === 0 && (
                 <div className="space-y-4">
                   <h3 className="font-semibold text-lg">Order History</h3>
-                  {/* Add order history logic here */}
-                  <p className="text-gray-600">No orders found.</p>
+                  {isLoading ? (
+                    <p>Loading orders...</p>
+                  ) : error ? (
+                    <p className="text-red-500">{error}</p>
+                  ) : orders.length === 0 ? (
+                    <p className="text-gray-600">No orders found.</p>
+                  ) : (
+                    <div className="space-y-4">
+                      {orders.map((order) => (
+                        <div
+                          key={order._id}
+                          className="border rounded-lg p-4 cursor-pointer"
+                          onClick={() =>
+                            setExpandedOrderId(expandedOrderId === order._id ? null : order._id)
+                          }
+                        >
+                          <div className="flex justify-between items-center">
+                            <div>
+                              <p className="font-medium">Order ID: {order._id}</p>
+                              <p className="text-sm text-gray-600">
+                                Date: {new Date(order.createdAt).toLocaleDateString()}
+                              </p>
+                            </div>
+                            <div className="text-right">
+                              <p className="font-medium">₹{order.totalAmount ?? order.orderAmount}</p>
+                              <p
+                                className={`text-sm ${
+                                  order.orderStatus === 'completed'
+                                    ? 'text-green-600'
+                                    : 'text-orange-600'
+                                }`}
+                              >
+                                {order.orderStatus}
+                              </p>
+                            </div>
+                          </div>
+                          {expandedOrderId === order._id && (
+                            <div className="mt-4 bg-gray-50 rounded p-3">
+                              <h4 className="font-semibold mb-2">Items</h4>
+                              <ul className="mb-2">
+                                {(order.items || []).map((item: any, idx: number) => (
+                                  <li key={idx} className="flex justify-between py-1 border-b last:border-b-0">
+                                    <span>
+                                      {item.name} x {item.quantity}
+                                    </span>
+                                    <span>₹{item.price}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                              <div className="flex justify-between font-semibold mt-2">
+                                <span>Total Amount:</span>
+                                <span>₹{order.totalAmount ?? order.orderAmount}</span>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
               {activeTab === 1 && (
@@ -133,6 +292,7 @@ const UserProfile = () => {
                         onChange={(e) => setDisplayName(e.target.value)}
                         className="w-full px-4 py-2 border rounded-md"
                         placeholder="Enter your name"
+                        disabled={!isEditing}
                       />
                     </div>
                     <div>
@@ -146,20 +306,50 @@ const UserProfile = () => {
                         className="w-full px-4 py-2 border rounded-md bg-gray-50"
                       />
                     </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Profile Photo URL
+                      </label>
+                      <input
+                        type="url"
+                        value={photoURL}
+                        onChange={(e) => setPhotoURL(e.target.value)}
+                        className="w-full px-4 py-2 border rounded-md"
+                        placeholder="Enter photo URL"
+                        disabled={!isEditing}
+                      />
+                    </div>
+                    {profileUpdateMsg && (
+                      <div className={`text-sm ${profileUpdateMsg.includes('success') ? 'text-green-600' : 'text-red-500'}`}>
+                        {profileUpdateMsg}
+                      </div>
+                    )}
                     <div className="flex justify-end gap-4">
-                      <button
-                        type="button"
-                        onClick={() => setIsEditing(false)}
-                        className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        type="submit"
-                        className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
-                      >
-                        {isEditing ? 'Save Changes' : 'Edit'}
-                      </button>
+                      {isEditing ? (
+                        <>
+                          <button
+                            type="button"
+                            onClick={handleCancelEdit}
+                            className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            type="submit"
+                            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                          >
+                            Save Changes
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={handleEditClick}
+                          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                        >
+                          Edit
+                        </button>
+                      )}
                     </div>
                   </form>
                 </div>
@@ -170,6 +360,9 @@ const UserProfile = () => {
       </div>
     </div>
   );
-};
+}
+
+
+ 
 
 export default UserProfile;
