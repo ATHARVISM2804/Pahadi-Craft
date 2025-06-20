@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useCartStore } from '../store/cartStore';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { config } from '../utils/config';
 
 const Checkout: React.FC = () => {
   const { items, getTotal, clearCart, toggleCart } = useCartStore();
@@ -56,7 +57,7 @@ const Checkout: React.FC = () => {
 
     setIsPaying(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/create-order`, {
+      const res = await fetch(`${config.backendUrl}/api/create-order`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
