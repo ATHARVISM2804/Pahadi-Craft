@@ -10,6 +10,7 @@ interface CartStore {
   clearCart: () => void;
   toggleCart: () => void;
   getTotal: () => number;
+  
 }
 
 export const useCartStore = create<CartStore>((set, get) => ({
