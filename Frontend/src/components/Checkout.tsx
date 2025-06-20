@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useCartStore } from '../store/cartStore';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { config } from '../utils/config';
 
 const Checkout: React.FC = () => {
   const { items, getTotal, clearCart, toggleCart } = useCartStore();
@@ -57,7 +56,7 @@ const Checkout: React.FC = () => {
 
     setIsPaying(true);
     try {
-      const res = await fetch(`${config.backendUrl}/api/create-order`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/create-order`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -65,14 +64,26 @@ const Checkout: React.FC = () => {
         },
         body: JSON.stringify({ 
           amount: getTotal(),
-          // firebaseUser: user // Include Firebase UID
         }),
         credentials: 'include',
       });
 
+      const contentType = res.headers.get('content-type');
       if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.message || 'Failed to create order. Please try again later.');
+        let errorMsg = 'Failed to create order. Please try again later.';
+        if (contentType && contentType.includes('application/json')) {
+          const error = await res.json();
+          errorMsg = error.message || errorMsg;
+        } else {
+          const text = await res.text();
+          errorMsg = `Server error: ${text.slice(0, 100)}`;
+        }
+        throw new Error(errorMsg);
+      }
+
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await res.text();
+        throw new Error(`Unexpected response from server: ${text.slice(0, 100)}`);
       }
 
       const orderData = await res.json();
@@ -96,7 +107,7 @@ const Checkout: React.FC = () => {
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 ...response,
-                firebaseUser: user, // Add the Firebase user object
+                firebaseUser: user,
                 userDetails: {
                   ...form,
                   amount: getTotal(),
@@ -105,6 +116,24 @@ const Checkout: React.FC = () => {
               }),
               credentials: 'include',
             });
+
+            const verifyContentType = verifyRes.headers.get('content-type');
+            if (!verifyRes.ok) {
+              let errorMsg = 'Payment verification failed';
+              if (verifyContentType && verifyContentType.includes('application/json')) {
+                const error = await verifyRes.json();
+                errorMsg = error.message || errorMsg;
+              } else {
+                const text = await verifyRes.text();
+                errorMsg = `Server error: ${text.slice(0, 100)}`;
+              }
+              throw new Error(errorMsg);
+            }
+
+            if (!verifyContentType || !verifyContentType.includes('application/json')) {
+              const text = await verifyRes.text();
+              throw new Error(`Unexpected response from server: ${text.slice(0, 100)}`);
+            }
 
             const result = await verifyRes.json();
             if (result.success) {
