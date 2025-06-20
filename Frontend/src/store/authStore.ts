@@ -6,6 +6,7 @@ import {
   signOut as firebaseSignOut,
   onAuthStateChanged,
   User,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 import { auth, googleProvider } from '../firebase';
 
@@ -18,6 +19,7 @@ interface AuthStore {
   signUp: (data: { email: string; password: string }) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -71,6 +73,18 @@ export const useAuthStore = create<AuthStore>((set) => ({
       set({ user: null });
     } catch (err: any) {
       set({ error: err.message });
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  resetPassword: async (email: string) => {
+    set({ loading: true, error: null });
+    try {
+      await sendPasswordResetEmail(auth, email);
+    } catch (err: any) {
+      set({ error: err.message });
+      throw err;
     } finally {
       set({ loading: false });
     }

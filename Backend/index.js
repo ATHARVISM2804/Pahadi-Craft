@@ -7,6 +7,7 @@ const verifyPayment = require('./Routes/verifyPayment');
 const orders = require('./Routes/orders');
 const userRoute = require('./Routes/user.route');
 const mongoose = require('mongoose');
+// const chatRoutes = require('./Routes/chatRoutes');
 require('dotenv').config();
 
 dotenv.config();
@@ -43,6 +44,8 @@ app.use('/api/create-order', createOrder);
 app.use('/api/verify-payment', verifyPayment);
 app.use('/api/orders', orders);
 app.use('/api/user', userRoute);
+// app.use("/api/chat", chatRoutes);
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

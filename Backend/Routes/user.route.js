@@ -5,7 +5,7 @@ const User = require('../models/User');
 // Create or update user on login or profile update
 router.post('/save', async (req, res) => {
   try {
-    const { uid, email, name, photo, phone } = req.body;
+    const { uid, email, name, photo, phone, street, city, state, pincode } = req.body;
     if (!uid || !email) {
       return res.status(400).json({ success: false, message: 'uid and email are required' });
     }
@@ -17,17 +17,28 @@ router.post('/save', async (req, res) => {
         email,
         name: name || '',
         photo: photo || '',
-        phone: phone || ''
+        phone: phone || '',
+        address: {
+          street: street || '',
+          city: city || '',
+          state: state || '',
+          pincode: pincode || ''
+        }
       });
     } else {
-      // Use findByIdAndUpdate with { new: true } to get the updated document
       user = await User.findByIdAndUpdate(
         user._id,
         {
           email,
           name: name || user.name,
           photo: photo || user.photo,
-          phone: phone || user.phone
+          phone: phone || user.phone,
+          address: {
+            street: street || user.address?.street,
+            city: city || user.address?.city,
+            state: state || user.address?.state,
+            pincode: pincode || user.address?.pincode
+          }
         },
         { new: true }
       );
