@@ -25,6 +25,8 @@ import CareGuide from './pages/CareGuide';
 import Dashboard from './pages/Dashboard';
 import Checkout from './components/Checkout';
 import UserProfile from './pages/UserProfile';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
 
 
 function App() {
@@ -46,10 +48,13 @@ function App() {
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/returns" element={<Returns />} />
           <Route path="/faq" element={<Faq />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/care-guide" element={<CareGuide />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path='/profile' element={<UserProfile />} />
           <Route path='/checkout' element={<Checkout />} />
+          
 
           <Route
             path="/admin/*"

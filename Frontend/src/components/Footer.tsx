@@ -64,6 +64,12 @@ const Footer = () => {
               <li>
                 <Link to="/care-guide" className="hover:text-[#C9A66B] transition-colors">Candle Care Guide</Link>
               </li>
+              <li>
+                <Link to="/terms-conditions" className="hover:text-[#C9A66B] transition-colors">Terms and Conditions</Link>
+              </li>
+              <li>
+                <Link to="/privacy-policy" className="hover:text-[#C9A66B] transition-colors">Privacy Policy</Link>
+              </li>
             </ul>
           </div>
 
