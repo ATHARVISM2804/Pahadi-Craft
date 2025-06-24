@@ -6,7 +6,7 @@ const reviews = [
   {
     name: 'Shoaib Shaikh Siddiqui',
     location: 'Lingsugur, Karnataka',
-    rating: 3,
+    rating: 5,
     date: '05-April-25',
     product: 'Tea Light Candle',
     response: false,
@@ -67,7 +67,7 @@ const reviews = [
   {
     name: 'Krithiga N',
     location: 'Chennai, Tamil Nadu',
-    rating: 4,
+    rating: 5,
     date: '11-November-24',
     product: 'Candle Holder',
     response: true,
@@ -129,70 +129,48 @@ const RatingsSummary = () => {
           <p className="text-gray-600">{total} Reviews</p>
         </div>
         <div className="flex-1">
-          {[5, 4, 3, 2, 1].map((star, i) => (
+          {[5, 4, 3, 2, 1].map((star) => (
             <div key={star} className="flex items-center text-sm mb-1">
               <span className="w-12">{star} Star</span>
               <div className="w-full h-3 mx-2 bg-gray-200 rounded">
                 <div
                   className="h-full bg-green-500 rounded"
-                  style={{ width: `${percentages[5 - star]}%` }}
+                  style={{ width: `${percentages[star - 1]}%` }}
                 ></div>
               </div>
-              <span className="w-12 text-right">({percentages[5 - star]}%)</span>
+              <span className="w-12 text-right">({percentages[star - 1]}%)</span>
             </div>
           ))}
         </div>
         <div className="flex flex-col items-center gap-2">
-          <div className="text-center">
-            <p className="font-semibold">Response</p>
-            <div className="relative w-16 h-16">
-              <svg className="absolute top-0 left-0" viewBox="0 0 36 36">
-                <path
-                  d="M18 2.0845
-                    a 15.9155 15.9155 0 0 1 0 31.831
-                    a 15.9155 15.9155 0 0 1 0 -31.831"
-                  fill="none"
-                  stroke="#e6e6e6"
-                  strokeWidth="3"
-                />
-                <path
-                  d="M18 2.0845
-                    a 15.9155 15.9155 0 0 1 0 31.831"
-                  fill="none"
-                  stroke="#3CB371"
-                  strokeWidth="3"
-                  strokeDasharray={`${satisfaction.response}, 100`}
-                />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold">
-                {satisfaction.response}%
+          {['Response', 'Quality', 'Delivery'].map((label, i) => {
+            const percent = satisfaction[label.toLowerCase()];
+            return (
+              <div key={label} className="text-center">
+                <p className="font-semibold">{label}</p>
+                <div className="relative w-16 h-16">
+                  <svg className="absolute top-0 left-0" viewBox="0 0 36 36">
+                    <path
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      fill="none"
+                      stroke="#e6e6e6"
+                      strokeWidth="3"
+                    />
+                    <path
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831"
+                      fill="none"
+                      stroke="#3CB371"
+                      strokeWidth="3"
+                      strokeDasharray={`${percent}, 100`}
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold">
+                    {percent}%
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="text-center">
-            <p className="font-semibold">Quality</p>
-            <div className="relative w-16 h-16">
-              <svg className="absolute top-0 left-0" viewBox="0 0 36 36">
-                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#e6e6e6" strokeWidth="3" />
-                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke="#3CB371" strokeWidth="3" strokeDasharray={`${satisfaction.quality}, 100`} />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold">
-                {satisfaction.quality}%
-              </div>
-            </div>
-          </div>
-          <div className="text-center">
-            <p className="font-semibold">Delivery</p>
-            <div className="relative w-16 h-16">
-              <svg className="absolute top-0 left-0" viewBox="0 0 36 36">
-                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#e6e6e6" strokeWidth="3" />
-                <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke="#3CB371" strokeWidth="3" strokeDasharray={`${satisfaction.delivery}, 100`} />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold">
-                {satisfaction.delivery}%
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -257,4 +235,5 @@ const Testimonials = () => {
 };
 
 export default Testimonials;
+
 
