@@ -19,6 +19,19 @@ const Cart = () => {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
+  // Calculate subtotal (original amount without GST)
+  const getSubtotal = () => {
+    return items.reduce(
+      (sum, item) => sum + Number(item.product.price) * item.quantity,
+      0
+    );
+  };
+
+  // Calculate GST amount (18% of subtotal)
+  const getGST = () => {
+    return getSubtotal() * 0.18;
+  };
+
   // ✅ Load Razorpay script once
   useEffect(() => {
     const scriptId = 'razorpay-script';
@@ -31,7 +44,6 @@ const Cart = () => {
     document.body.appendChild(script);
   }, []);
 
-  // Add handleCheckout function
   const handleCheckout = () => {
     if (!isAuthenticated) {
       toggleCart();
@@ -139,12 +151,27 @@ const Cart = () => {
             {/* Footer */}
             {items.length > 0 && (
               <div className="border-t border-gray-200 p-4 space-y-3">
-                <div className="flex justify-between">
-                  <span className="font-serif text-[#5A4232]">Total</span>
-                  <span className="font-semibold text-[#5A4232]">
-                    ₹{getTotal().toFixed(2)}
-                  </span>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-sm text-gray-600">Subtotal</span>
+                    <span className="text-sm text-gray-600">
+                      ₹{getSubtotal().toFixed(2)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm text-gray-600">GST (18%)</span>
+                    <span className="text-sm text-gray-600">
+                      ₹{getGST().toFixed(2)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between pt-2 border-t border-gray-200">
+                    <span className="font-serif text-[#5A4232]">Total</span>
+                    <span className="font-semibold text-[#5A4232]">
+                      ₹{getTotal().toFixed(2)}
+                    </span>
+                  </div>
                 </div>
+                
                 <button
                   onClick={handleCheckout}
                   disabled={isLoading}
@@ -168,4 +195,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
