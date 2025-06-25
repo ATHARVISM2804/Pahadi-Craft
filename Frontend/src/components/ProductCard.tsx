@@ -39,7 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </h3>
         <p className="text-gray-600 text-sm mb-2">{product.description}</p>
         <div className="flex items-center justify-between">
-          <span className="text-[#C9A66B] font-semibold">${product.price}</span>
+          <span className="text-[#C9A66B] font-semibold">₹ {product.price}</span>
           <div className="flex items-center gap-1">
             {[...Array(5)].map((_, i) => (
               <Star 
