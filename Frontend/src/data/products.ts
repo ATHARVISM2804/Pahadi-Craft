@@ -805,4 +805,20 @@ export const categories = [
   'Accessories',
   'Limited Edition',
   'Eco-Friendly',
+  'Eco-Friendly',
+  'Eco-Friendly',
+  'Eco-Friendly',
+  'Eco-Friendly',
+  'Eco-Friendly',
+  'Eco-Friendly',
+  'Eco-Friendly',
+  'Eco-Friendly',
+  'Eco-Friendly',
+  'Eco-Friendly',
+  'Eco-Friendly',
+  
+  
+  
+  
+  
 ];
