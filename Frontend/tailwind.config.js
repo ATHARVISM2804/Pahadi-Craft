@@ -26,8 +26,13 @@ export default {
         'fade-up': 'fadeUp 0.5s ease-out',
         'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
         'spin-slow': 'spin 3s linear infinite',
+        'slide': 'slide 20s linear infinite',
       },
       keyframes: {
+        slide: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
