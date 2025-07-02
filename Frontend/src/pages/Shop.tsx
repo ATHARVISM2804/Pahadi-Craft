@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, X } from 'lucide-react';
 import { products, categories } from '../data/products';
 import { useCartStore } from '../store/cartStore';
+import { useNavigate } from 'react-router-dom';
 
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -10,6 +11,7 @@ const Shop = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const { addItem } = useCartStore();
+  const navigate = useNavigate();
 
   const handleAddToCart = (product) => {
     addItem(product);
@@ -69,6 +71,13 @@ const Shop = () => {
                 </div>
               )}
             </div>
+
+            <button
+              onClick={() => navigate('/special-occult-candles')}
+              className="px-4 py-2 bg-[#3E2A1F] text-white rounded-full hover:bg-[#5A4232] transition"
+            >
+              Special Occult Candles
+            </button>
 
             <div className="relative w-full sm:w-1/2">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />

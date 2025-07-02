@@ -27,7 +27,7 @@ import Checkout from './components/Checkout';
 import UserProfile from './pages/UserProfile';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
-
+import SpecialOccultCandles from './pages/SpecialOccultCandles'; // 🔥 Add this line
 
 function App() {
   return (
@@ -54,6 +54,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path='/profile' element={<UserProfile />} />
           <Route path='/checkout' element={<Checkout />} />
+           <Route path="/special-occult-candles" element={<SpecialOccultCandles />} /> {/* 👈 Add this line */}
+
           
 
           <Route
