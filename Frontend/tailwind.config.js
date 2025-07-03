@@ -26,11 +26,11 @@ export default {
         'fade-up': 'fadeUp 0.5s ease-out',
         'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
         'spin-slow': 'spin 3s linear infinite',
-        'slide': 'slide 20s linear infinite',
+        'slide-left': 'slide-left 30s linear infinite',
       },
       keyframes: {
-        slide: {
-          '0%': { transform: 'translateX(0%)' },
+       'slide-left': {
+          '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
         },
         float: {
@@ -62,5 +62,13 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+      function ({ addUtilities }) {
+      addUtilities({
+        '.pause': {
+          animationPlayState: 'paused',
+        },
+      });
+    },
+  ],
 };

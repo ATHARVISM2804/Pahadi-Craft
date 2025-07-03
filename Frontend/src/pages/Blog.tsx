@@ -9,6 +9,8 @@ const Blog = () => {
 
   const featuredPost = blogPosts[0];
 
+  const slideImages = blogPosts.slice(0, 6).map((post) => post.image);
+
   return (
     <div className="min-h-screen pt-20 bg-[#FFF8F2]">
       {/* Hero Section */}
@@ -126,18 +128,24 @@ const Blog = () => {
         )}
       </AnimatePresence>
 
-      {/* Slideshow Section */}
-      <div className="mt-16 max-w-5xl mx-auto px-4">
-        <h3 className="text-2xl font-serif text-[#5A4232] mb-6 text-center">🖼️ Moments from Our Journey</h3>
-        <div className="overflow-x-auto whitespace-nowrap flex gap-4 pb-4">
-          {blogPosts.slice(0, 6).map((post, idx) => (
-            <img
-              key={idx}
-              src={post.image}
-              alt="slide"
-              className="w-72 h-48 object-cover rounded-lg shadow-md hover:scale-105 transition-transform"
-            />
-          ))}
+      {/* Sliding Image Section */}
+      <div className="mt-20 max-w-7xl mx-auto px-4">
+        <h3 className="text-2xl font-serif text-[#5A4232] mb-6 text-center">🖼️ Captured Moments</h3>
+        <div className="relative overflow-hidden group rounded-xl border border-[#EBD6BD] shadow-md">
+          <div className="flex w-max gap-4 animate-[slide-left_30s_linear_infinite] group-hover:pause">
+            {[...slideImages, ...slideImages].map((src, idx) => (
+              <motion.img
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                key={idx}
+                src={src}
+                alt={`Slide ${idx + 1}`}
+                className="h-48 w-72 object-cover rounded-lg shadow-md"
+              />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -158,5 +166,6 @@ const Blog = () => {
 };
 
 export default Blog;
+
 
 
