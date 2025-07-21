@@ -88,7 +88,7 @@ const FragranceGuide = () => {
               Fragrance Guide
             </h1>
             <p className="text-[#7A6A5A] max-w-2xl mx-auto text-lg leading-relaxed">
-              Discover the art of fragrance layering and explore the elegant notes that define our signature scents.
+              Discover the  art of fragrance layering and explore the elegant notes that define our signature scents.
             </p>
           </div>
 
