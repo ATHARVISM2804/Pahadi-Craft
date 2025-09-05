@@ -9,7 +9,7 @@ import insta3 from '../images1/insta3.png';
 const instagramPosts = [
   {
     id: 1,
-    image: insta1,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711247/WhatsApp_Image_2023-07-08_at_23.43.06_1_vea6fx.jpg',
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const instagramPosts = [
   },
   {
     id: 4,
-    image: insta3,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711239/IMG-20231208-WA0007_ebdrwb.jpg',
   },
 ];
 
