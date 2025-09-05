@@ -209,6 +209,7 @@ const FragranceGuide = () => {
                           <div className="flex flex-wrap gap-2">
                             {fragrance.baseNotes.map((note, index) => (
                               <span
+                              
                                 key={index}
                                 className="px-3 py-1 bg-[#A8B5A2]/10 text-[#A8B5A2] rounded-full text-sm"
                               >
