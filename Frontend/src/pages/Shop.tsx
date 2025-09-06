@@ -391,29 +391,55 @@ const Shop = () => {
                     </ul>
                   </div>
 
-                  <div className="mt-auto flex items-center space-x-3">
-                    <div className="flex items-center border border-gray-200 rounded-md overflow-hidden shadow-sm">
-                      <button 
-                        className="px-2 py-1.5 text-[#5A4232] hover:bg-[#F5E9DA] transition-colors"
-                        onClick={() => setQuantity(prev => Math.max(prev - 1, 1))}
+                  <div className="mt-auto flex flex-col space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex items-center border border-gray-200 rounded-md overflow-hidden shadow-sm">
+                        <button 
+                          className="px-2 py-1.5 text-[#5A4232] hover:bg-[#F5E9DA] transition-colors"
+                          onClick={() => setQuantity(prev => Math.max(prev - 1, 1))}
+                        >
+                          <span className="font-bold">−</span>
+                        </button>
+                        <span className="px-3 py-1.5 border-x border-gray-200 font-medium text-gray-800 w-9 text-center text-sm">{quantity}</span>
+                        <button 
+                          className="px-2 py-1.5 text-[#5A4232] hover:bg-[#F5E9DA] transition-colors"
+                          onClick={() => setQuantity(prev => prev + 1)}
+                        >
+                          <span className="font-bold">+</span>
+                        </button>
+                      </div>
+                      
+                      <button
+                        onClick={() => handleAddToCart(selectedProduct, quantity)}
+                        className="flex-1 bg-gradient-to-r from-[#5A4232] to-[#6B5344] text-white py-2 px-4 rounded-md hover:shadow-md transition-all duration-300 flex items-center justify-center gap-1.5 font-medium text-sm"
                       >
-                        <span className="font-bold">−</span>
-                      </button>
-                      <span className="px-3 py-1.5 border-x border-gray-200 font-medium text-gray-800 w-9 text-center text-sm">{quantity}</span>
-                      <button 
-                        className="px-2 py-1.5 text-[#5A4232] hover:bg-[#F5E9DA] transition-colors"
-                        onClick={() => setQuantity(prev => prev + 1)}
-                      >
-                        <span className="font-bold">+</span>
+                        <ShoppingCart className="w-4 h-4" />
+                        Add to Cart
                       </button>
                     </div>
                     
-                    <button
-                      onClick={() => handleAddToCart(selectedProduct, quantity)}
-                      className="flex-1 bg-gradient-to-r from-[#5A4232] to-[#6B5344] text-white py-2 px-4 rounded-md hover:shadow-md transition-all duration-300 flex items-center justify-center gap-1.5 font-medium text-sm"
+                    <button 
+                      onClick={() => {
+                        setSelectedProduct(null);
+                        navigate('/custom-order');
+                      }}
+                      className="w-full border border-[#C9A66B] text-[#C9A66B] hover:bg-[#C9A66B]/10 py-2 px-4 rounded-md transition-colors flex items-center justify-center gap-1.5 font-medium text-sm"
                     >
-                      <ShoppingCart className="w-4 h-4" />
-                      Add to Cart
+                      <svg 
+                        className="w-4 h-4" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24" 
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" 
+                        />
+                      </svg>
+                      Create Custom Order
                     </button>
                   </div>
                 </div>

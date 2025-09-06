@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Filter } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Filter, X, Droplets } from 'lucide-react';
 import { fragrances } from '../data/fragrances'; // Ensure each fragrance has a `category` key
 
 const FragranceGuide = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedFragrance, setSelectedFragrance] = useState(null);
 
   const categories = [
     'All',
@@ -64,7 +65,7 @@ const FragranceGuide = () => {
 
   // Disable scroll when modal is open
   useEffect(() => {
-    if (showFilters) {
+    if (showFilters || selectedFragrance) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
@@ -72,7 +73,7 @@ const FragranceGuide = () => {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [showFilters]);
+  }, [showFilters, selectedFragrance]);
 
   return (
     <div className="min-h-screen pt-20 bg-[#FFF8F2]">
@@ -88,12 +89,12 @@ const FragranceGuide = () => {
               Fragrance Guide
             </h1>
             <p className="text-[#7A6A5A] max-w-2xl mx-auto text-lg leading-relaxed">
-              Discover the  art of fragrance layering and explore the elegant notes that define our signature scents.
+              Discover the art of fragrance layering and explore the elegant notes that define our signature scents.
             </p>
           </div>
 
           {/* All Filters Button */}
-          <div className="flex justify-center mb-12 relative z-50">
+          <div className="flex justify-center mb-12 relative z-40">
             <div className="relative">
               <button
                 onClick={() => setShowFilters((prev) => !prev)}
@@ -138,8 +139,8 @@ const FragranceGuide = () => {
             </div>
           )}
 
-          {/* Fragrance Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {/* Fragrance Grid - Simplified Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {fragrances
               .filter((fragrance) =>
                 selectedCategory === 'All'
@@ -152,74 +153,28 @@ const FragranceGuide = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="bg-white/40 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all"
+                  className="bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all cursor-pointer group"
+                  onClick={() => setSelectedFragrance(fragrance)}
                 >
-                  {/* Card Layout - Adjust to be more compact */}
-                  <div className="flex flex-col h-full">
-                    {/* Image - Increased height and improved visibility */}
-                    <div className="relative h-64 sm:h-72 overflow-hidden">
-                      <img
-                        src={fragrance.image}
-                        alt={fragrance.name}
-                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                      />
-                      {/* Add a subtle gradient overlay to make text more visible if placed on image */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-5 flex flex-col flex-grow">
-                      <h2 className="text-xl font-serif font-bold text-[#5A4232] mb-2">
+                  {/* Simplified Card Layout */}
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={fragrance.image}
+                      alt={fragrance.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex flex-col justify-end p-5">
+                      <h2 className="text-xl font-serif font-bold text-white mb-1">
                         {fragrance.name}
                       </h2>
-                      <p className="text-[#6B5849] text-sm mb-3 leading-relaxed">
-                        {fragrance.description}
-                      </p>
-                      <span className="inline-block px-4 py-1 bg-[#F5E9DA] text-[#5A4232] rounded-full text-xs font-medium mb-3 w-max shadow-sm">
+                      <p className="text-white/90 text-sm">
                         {fragrance.mood}
-                      </span>
-
-                      {/* Notes - Made more compact */}
-                      <div className="space-y-3 mt-auto">
-                        <div>
-                          <h3 className="font-serif font-medium text-[#5A4232] mb-1 text-sm">Top Notes</h3>
-                          <div className="flex flex-wrap gap-1">
-                            {fragrance.topNotes.map((note, index) => (
-                              <span
-                                key={index}
-                                className="px-2 py-0.5 bg-[#C9A66B]/10 text-[#C9A66B] rounded-full text-xs"
-                              >
-                                {note}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                        <div>
-                          <h3 className="font-serif font-medium text-[#5A4232] mb-1 text-sm">Middle Notes</h3>
-                          <div className="flex flex-wrap gap-1">
-                            {fragrance.middleNotes.map((note, index) => (
-                              <span
-                                key={index}
-                                className="px-2 py-0.5 bg-[#5A4232]/10 text-[#5A4232] rounded-full text-xs"
-                              >
-                                {note}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                        <div>
-                          <h3 className="font-serif font-medium text-[#5A4232] mb-1 text-sm">Base Notes</h3>
-                          <div className="flex flex-wrap gap-1">
-                            {fragrance.baseNotes.map((note, index) => (
-                              <span
-                                key={index}
-                                className="px-2 py-0.5 bg-[#A8B5A2]/10 text-[#A8B5A2] rounded-full text-xs"
-                              >
-                                {note}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
+                      </p>
+                      <div className="mt-2 inline-flex items-center text-white/70 text-xs">
+                        <span>View Details</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
                       </div>
                     </div>
                   </div>
@@ -228,6 +183,128 @@ const FragranceGuide = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Fragrance Detail Modal */}
+      <AnimatePresence>
+        {selectedFragrance && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedFragrance(null)}
+          >
+            <motion.div
+              className="bg-white max-w-3xl w-full rounded-2xl overflow-hidden shadow-2xl"
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 30 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="relative">
+                <button
+                  className="absolute right-4 top-4 bg-white/80 rounded-full p-1.5 backdrop-blur-sm z-10 hover:bg-white transition-colors"
+                  onClick={() => setSelectedFragrance(null)}
+                >
+                  <X className="h-4 w-4 text-[#5A4232]" />
+                </button>
+              </div>
+
+              <div className="flex flex-col md:flex-row">
+                {/* Left Side - Image */}
+                <div className="md:w-1/2 h-64 md:h-auto relative">
+                  <img 
+                    src={selectedFragrance.image}
+                    alt={selectedFragrance.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent md:bg-gradient-to-t flex md:hidden items-end p-6">
+                    <h2 className="text-3xl font-serif text-white">{selectedFragrance.name}</h2>
+                  </div>
+                </div>
+
+                {/* Right Side - Content */}
+                <div className="md:w-1/2 p-6 md:p-8 relative">
+                  <div className="hidden md:block">
+                    <h2 className="text-3xl font-serif font-bold text-[#5A4232] mb-2">{selectedFragrance.name}</h2>
+                    <div className="w-12 h-1 bg-[#C9A66B] mb-4"></div>
+                  </div>
+
+                  <div className="inline-block px-3 py-1 bg-[#F5E9DA] text-[#5A4232] rounded-full text-xs font-medium mb-4">
+                    {selectedFragrance.mood}
+                  </div>
+
+                  <p className="text-[#6B5849] mb-6 leading-relaxed">
+                    {selectedFragrance.description}
+                  </p>
+
+                  {/* Notes Section */}
+                  <div className="space-y-4">
+                    <div className="bg-[#FFF8F2] rounded-xl p-4">
+                      <h3 className="font-serif text-[#5A4232] mb-3 flex items-center text-sm font-medium">
+                        <Droplets className="w-4 h-4 mr-1.5 text-[#C9A66B]" />
+                        Top Notes
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedFragrance.topNotes.map((note, index) => (
+                          <span
+                            key={index}
+                            className="px-2.5 py-1 bg-[#C9A66B]/10 text-[#C9A66B] rounded-md text-xs font-medium"
+                          >
+                            {note}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="bg-[#FFF8F2] rounded-xl p-4">
+                      <h3 className="font-serif text-[#5A4232] mb-3 flex items-center text-sm font-medium">
+                        <Droplets className="w-4 h-4 mr-1.5 text-[#5A4232]" />
+                        Middle Notes
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedFragrance.middleNotes.map((note, index) => (
+                          <span
+                            key={index}
+                            className="px-2.5 py-1 bg-[#5A4232]/10 text-[#5A4232] rounded-md text-xs font-medium"
+                          >
+                            {note}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="bg-[#FFF8F2] rounded-xl p-4">
+                      <h3 className="font-serif text-[#5A4232] mb-3 flex items-center text-sm font-medium">
+                        <Droplets className="w-4 h-4 mr-1.5 text-[#86957F]" />
+                        Base Notes
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedFragrance.baseNotes.map((note, index) => (
+                          <span
+                            key={index}
+                            className="px-2.5 py-1 bg-[#86957F]/10 text-[#86957F] rounded-md text-xs font-medium"
+                          >
+                            {note}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Shop this fragrance button */}
+                  <div className="mt-6">
+                    <button className="w-full bg-[#5A4232] hover:bg-[#4A3222] text-white py-3 rounded-lg font-medium transition-colors">
+                      Shop Candles with this Fragrance
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

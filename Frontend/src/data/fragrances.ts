@@ -16,7 +16,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Rose Petals', 'Green Leaves'],
     middleNotes: ['Damascus Rose', 'Peony'],
     baseNotes: ['Musk', 'White Woods'],
-    image: amber,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711736/Snapchat-748762693_dwobjp.jpg',
   },
   {
     id: '2',
@@ -27,7 +27,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Green Apple', 'Lemon Zest'],
     middleNotes: ['Apple Blossom', 'Jasmine'],
     baseNotes: ['Cedar', 'Vanilla'],
-    image: linen,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711738/IMG-20250621-WA0006_px3k2z.jpg',
   },
   {
     id: '3',
@@ -38,7 +38,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Water Lily', 'Dewdrop'],
     middleNotes: ['Lotus Flower', 'Rose'],
     baseNotes: ['Musk', 'Woody Notes'],
-    image: forest,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711663/WhatsApp_Image_2023-07-08_at_23.42.57_h2wcra.jpg',
   },
   {
     id: '4',
@@ -49,7 +49,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Green Apple', 'Bergamot'],
     middleNotes: ['Apple Skin', 'Mint'],
     baseNotes: ['Musk', 'Cedar'],
-    image: amber,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711659/IMG-20231204-WA0040_dcsxea.jpg',
   },
   {
     id: '5',
@@ -60,7 +60,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Peppermint', 'Eucalyptus'],
     middleNotes: ['Spearmint', 'Green Leaves'],
     baseNotes: ['White Musk', 'Pine'],
-    image: linen,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711658/IMG-20231211-WA0001_b4h5cv.jpg',
   },
   {
     id: '6',
@@ -71,7 +71,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Saffron', 'White Pepper'],
     middleNotes: ['White Oudh', 'Rose'],
     baseNotes: ['Amber', 'Sandalwood'],
-    image: forest,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711654/IMG-20241017-WA0051_iw8c9e.jpg',
   },
   {
     id: '7',
@@ -82,7 +82,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Cocoa', 'Orange Zest'],
     middleNotes: ['Dark Chocolate', 'Vanilla'],
     baseNotes: ['Amber', 'Tonka Bean'],
-    image: amber,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711654/20250628_172728_lanv7g.jpg',
   },
   {
     id: '8',
@@ -93,7 +93,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Myrrh', 'Frankincense'],
     middleNotes: ['Amber', 'Rose'],
     baseNotes: ['Vanilla', 'Cedarwood'],
-    image: linen,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986329/Picture_113_weyoom.png',
   },
   {
     id: '9',
@@ -104,7 +104,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Bergamot', 'Cardamom'],
     middleNotes: ['Sandalwood', 'Cedarwood'],
     baseNotes: ['Vanilla', 'Amber'],
-    image: forest,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754987727/Picture_112_dchjhg.png',
   },
   {
     id: '10',
@@ -115,7 +115,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Pine Needles', 'Eucalyptus'],
     middleNotes: ['Fir Balsam', 'Cedar'],
     baseNotes: ['Moss', 'Woody Notes'],
-    image: amber,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756642700/0049_dehfo6.jpg',
   },
   {
     id: '11',
@@ -126,7 +126,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Bergamot', 'Pink Pepper'],
     middleNotes: ['White Musk', 'Rose'],
     baseNotes: ['Amber', 'Vanilla'],
-    image: linen,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756642696/WhatsApp_Image_2023-07-10_at_15.15.12_vpuoxh.jpg',
   },
   {
     id: '12',
@@ -137,7 +137,7 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Watermelon', 'Cucumber'],
     middleNotes: ['Green Notes', 'Jasmine'],
     baseNotes: ['Musk', 'Light Woods'],
-    image: forest,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756642691/IMG-20241017-WA0051_wlbvam.jpg',
   },
   {
     id: '13',
@@ -149,53 +149,5 @@ export const fragrances: Fragrance[] = [
     middleNotes: ['Verbena', 'Green Tea'],
     baseNotes: ['Bamboo', 'White Musk'],
     image: amber,
-  },
-  // Adding more products to match each category
-  {
-    id: '14',
-    name: 'Rich Mahogany',
-    description: 'A sophisticated woody scent with rich mahogany notes.',
-    mood: 'Sophisticated & Mature',
-    category: 'Mahogany',
-    topNotes: ['Bergamot', 'Spices'],
-    middleNotes: ['Mahogany', 'Cedar'],
-    baseNotes: ['Amber', 'Leather'],
-    image: linen,
-  },
-  // Continue with the rest of categories...
-  // I'll add a few more as examples but would add all categories in actual implementation
-  {
-    id: '15',
-    name: 'Herbal Rosemary',
-    description: 'A herbal and invigorating scent with rosemary essence.',
-    mood: 'Refreshing & Clarifying',
-    category: 'Rosemary',
-    topNotes: ['Rosemary', 'Mint'],
-    middleNotes: ['Lavender', 'Eucalyptus'],
-    baseNotes: ['Cedar', 'Moss'],
-    image: forest,
-  },
-  {
-    id: '16',
-    name: 'Fresh Basil',
-    description: 'A green and herbal scent with fresh basil leaves.',
-    mood: 'Refreshing & Herbaceous',
-    category: 'Basil',
-    topNotes: ['Basil', 'Lemon'],
-    middleNotes: ['Green Notes', 'Mint'],
-    baseNotes: ['Cedar', 'Moss'],
-    image: amber,
-  },
-  // More products would continue for all categories
-  {
-    id: '50',
-    name: 'Warm Cinnamon',
-    description: 'A spicy and warm fragrance with rich cinnamon notes.',
-    mood: 'Cozy & Inviting',
-    category: 'Cinnamon',
-    topNotes: ['Cinnamon', 'Orange'],
-    middleNotes: ['Clove', 'Nutmeg'],
-    baseNotes: ['Vanilla', 'Musk'],
-    image: linen,
   },
 ];
