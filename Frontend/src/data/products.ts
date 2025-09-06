@@ -1,60 +1,5 @@
 import { Product } from '../types';
 
-import jar1 from '../Glass Jar Candles/0008.jpg'
-import jar2 from '../Glass Jar Candles/20210225_194234.jpg'
-import Jar3 from '../Glass Jar Candles/jar3.jpg'
-import Jar4 from '../Glass Jar Candles/jar4.jpg'
-import Jar5 from '../Glass Jar Candles/jar5.jpg'
-import jar6 from '../Glass Jar Candles/jar6.jpg'
-import Jar7 from '../Glass Jar Candles/jar7.jpg'
-import Jar8 from '../Glass Jar Candles/jar8.jpg'
-import Jar9 from '../Glass Jar Candles/jar9.jpg'
-import Jar10 from '../Glass Jar Candles/jar10.jpg'
-import Jar11 from '../Glass Jar Candles/jar11.jpg'
-import Jar12 from '../Glass Jar Candles/jar12.jpg'
-import Jar13 from '../Glass Jar Candles/jar13.jpeg'
-import Jar14 from '../Glass Jar Candles/jar14.jpeg'
-import craft1 from '../Metal Craft Candles/craft1.jpeg'
-import craft2 from '../Metal Craft Candles/craft2.jpg'
-import craft3 from '../Metal Craft Candles/craft3.jpg'
-import craft4 from '../Metal Craft Candles/carft4.jpg'
-import craft5 from '../Metal Craft Candles/craft5.jpg'
-import craft6 from '../Metal Craft Candles/carft6.jpeg'
-import bath1 from '../Bath Salts/bath1.jpg'
-import bath2 from '../Bath Salts/bath2.jpeg'
-import bath3 from '../Bath Salts/bath3.jpeg'
-import bath4 from '../Bath Salts/bath4.jpeg'
-import con1 from '../Concrete Products/concrete1.jpeg'
-import con2 from '../Concrete Products/concrete2.jpeg'
-import can1 from '../Figurine Candles/can1.jpg'
-import can2 from '../Figurine Candles/can2.jpg'
-import can3 from '../Figurine Candles/can3.jpg'
-import can4 from '../Figurine Candles/can4.jpg'
-import can5 from '../Figurine Candles/can5.jpg'
-import can6 from '../Figurine Candles/can6.jpg'
-import can7 from '../Figurine Candles/can7.jpg'
-import can8 from '../Figurine Candles/can8.jpg'
-import can9 from '../Figurine Candles/can9.jpg'
-import han1 from '../Handmade Soaps/soap1.jpg'
-import han2 from '../Handmade Soaps/soap2.jpg'
-import decor1 from '../Home Decor Candles/decor1.jpg'
-import decor2 from '../Home Decor Candles/decor2.jpg'
-import decor3 from '../Home Decor Candles/decor3.jpg'
-import decor4 from '../Home Decor Candles/decor4.jpg'
-import decor5 from '../Home Decor Candles/decor5.jpg'
-import decor6 from '../Home Decor Candles/decor6.jpg'
-import decor7 from '../Home Decor Candles/decor7.jpg'
-
-import decor9 from '../Home Decor Candles/decor9.jpg'
-import decor10 from '../Home Decor Candles/decor10.jpg'
-import decor11 from '../Home Decor Candles/decor11.jpg'
-import decor12 from '../Home Decor Candles/decor12.jpg'
-import decor13 from '../Home Decor Candles/decor13.png'
-import decor14 from '../Home Decor Candles/decor14.png'
-import decor15 from '../Home Decor Candles/decor15.png'
-import decor16 from '../Home Decor Candles/decor16.jpg'
-import oil1 from '../Oils/oil1.jpeg'
-import oil2 from '../Oils/oil2.jpeg'
 
 
 
@@ -767,7 +712,7 @@ export const products: Product[] = [
     name: 'Christmas Special Candle',
     description: 'Stylish candle designed to complement your home decor, featuring a unique shape and a warm, inviting scent.',
     price: 999,
-    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986281/20231201_133348_w44wxd.heic',
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986281/20231201_133348_w44wxd.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
@@ -798,140 +743,193 @@ export const products: Product[] = [
   },
   {
     id: '45',
-    name: 'Home Decor Candle',
+    name: 'Concrete Artifact',
     description: 'Stylish candle designed to complement your home decor, featuring a unique shape and a warm, inviting scent.',
     price: 999,
-    image: decor13,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986340/WhatsApp_Image_2023-08-19_at_12.08.10_PM_bqtuoj.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
     weight: '8 oz',
+    additionalImages: [
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986339/IMG-20230819-WA0023_a6h3lz.jpg',
+
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986319/IMG-20250521-WA0013_ij0rb7.jpg'
+      
+    ],
   },
   {
     id: '46',
-    name: 'Home Decor Candle',
+    name: 'Concrete Artifact',
     description: 'Stylish candle designed to complement your home decor, featuring a unique shape and a warm, inviting scent.',
     price: 999,
-    image: decor14,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986304/20250204_123622_yjvd0q.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
     weight: '8 oz',
+    additionalImages: [
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986304/20250204_123640_qpzm6n.jpg',
+    ],
   },
   {
     id: '47',
-    name: 'Home Decor Candle',
+    name: 'Concrete Artifact',
     description: 'Stylish candle designed to complement your home decor, featuring a unique shape and a warm, inviting scent.',
     price: 999,
-    image: decor15,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986314/20250628_172715_kychgv.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
     weight: '8 oz',
+    additionalImages: [
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986305/Picture_103_s2fgk5.png',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986306/20240927_094559_dn4lwy.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986323/20250328_120311_xxngso.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986333/IMG-20250621-WA0011_kiro9u.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986335/20250308_162402_nsg5st.jpg',
+    ],
   },
    {
     id: '48',
-    name: 'Home Decor Candle',
+    name: 'Concrete Vessel',
     description: 'Stylish candle designed to complement your home decor, featuring a unique shape and a warm, inviting scent.',
     price: 999,
-    image: decor16,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986329/Picture_113_weyoom.png',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
     weight: '8 oz',
+    additionalImages: [
+    ],
   },
    {
     id: '49',
-    name: 'Metal Craft Candle',
+    name: 'Concrete Roses',
     description: 'Elegant metal container with a unique design, filled with a soothing lavender scent.the candle can be customised with the fragrance of customer choice.',
     
     price: 999,
-    image: craft1,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986321/20250328_120401_uvjzgr.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
     weight: '8 oz',
+    additionalImages: [
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986315/IMG-20250521-WA0012_smgvju.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986328/20250328_115800_ocbljm.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986323/20250328_120311_xxngso.jpg',
+    ],
   },
     {
     id: '50',
-    name: 'Metal Craft Candle',
+    name: 'Decor Designer Candle',
     description: 'Elegant metal container with a unique design, filled with a soothing lavender scent.the candle can be customised with the fragrance of customer choice.',
     
     price: 999,
-    image: craft2,
+    image: "https://res.cloudinary.com/dwkexvdus/image/upload/v1754986447/IMG-20231211-WA0027_gqluxe.jpg",
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
     weight: '8 oz',
+    additionalImages: [
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986377/IMG-20231211-WA0032_arku9r.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986445/WhatsApp_Image_2023-12-29_at_15.21.45_e21ba59f_m9joqf.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986450/WhatsApp_Image_2023-07-09_at_9.54.10_AM_clkczc.jpg'
+    ],
   },
     {
     id: '51',
-    name: 'Metal Craft Candle',
+    name: 'Decor Designer Candle',
     description: 'Elegant metal container with a unique design, filled with a soothing lavender scent.the candle can be customised with the fragrance of customer choice.',
     
     price: 999,
-    image: craft3,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986453/burning_pine_conecandle_mab7uq.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
     weight: '8 oz',
+    additionalImages: [
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986455/20231201_143833_wwd2ih.heic'
+    ],
   },
     {
     id: '52',
-    name: 'Metal Craft Candle',
+    name: 'Decor Designer Candle',
     description: 'Elegant metal container with a unique design, filled with a soothing lavender scent.the candle can be customised with the fragrance of customer choice.',
     
     price: 999,
-    image: craft4,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986399/IMG-20230125-WA0033_gncjhl.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
     weight: '8 oz',
+    additionalImages: [
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986424/IMG-20230125-WA0030_d6hjiy.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986428/IMG-20230125-WA0032_wmp0de.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986429/IMG-20230125-WA0029_ovrsw8.jpg'
+    ],
   },
     {
     id: '53',
-    name: 'Metal Craft Candle',
+    name: 'Decor Designer Candle',
     description: 'Elegant metal container with a unique design, filled with a soothing lavender scent.the candle can be customised with the fragrance of customer choice.',
     
     price: 999,
-    image: craft5,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986356/IMG-20230819-WA0036_rhkur0.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
     weight: '8 oz',
+    additionalImages: [
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986350/IMG-20241017-WA0019_lvjcr7.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986355/IMG-20230819-WA0047_r549px.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986357/IMG-20230819-WA0046_waapzv.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986361/WhatsApp_Image_2023-07-09_at_9.53.28_AM_1_ysgscl.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986349/20250706_155404_oo4a9q.jpg'
+    ],
   },
     {
     id: '54',
-    name: 'Metal Craft Candle',
+    name: 'Decor Designer Candle',
     description: 'Elegant metal container with a unique design, filled with a soothing lavender scent.the candle can be customised with the fragrance of customer choice.',
     
     price: 999,
-    image: craft6,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986422/20241127_103722_tmsymc.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
     weight: '8 oz',
+    additionalImages: [
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986437/WhatsApp_Image_2023-07-09_at_9.52.57_AM_fllqmb.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986421/20241126_171226_ujhkm1.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986413/Photoroom-20240416_163012_1_suyiia.png',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986423/20241126_171206_utak7k.jpg'
+    ],
   },
    {
     id: '55',
-    name: 'Oils ', 
+    name: 'Decor Designer Candle ', 
     description: 'Refresh and revitalize your skin with the power of pure lemongrass hydrosol. This all-natural toner and skin mist is the ultimate pick-me-up for dull, tired complexions.',
     
     price: 999,
-    image: oil1,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986442/WhatsApp_Image_2023-07-09_at_9.53.05_AM_1_dkditv.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
     weight: '8 oz',
+    additionalImages: [
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986438/WhatsApp_Image_2023-07-09_at_9.53.01_AM_2_uxurlu.jpg',
+      'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986440/WhatsApp_Image_2023-07-09_at_9.53.01_AM_mxmiqf.jpg'
+    ],
   },
    {
     id: '55',
-    name: 'Oils ',
+    name: 'Decor Designer Candle',
     description: 'Refresh and revitalize your skin with the power of pure lemongrass hydrosol. This all-natural toner and skin mist is the ultimate pick-me-up for dull, tired complexions.',
    
     
     price: 999,
-    image: oil2,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986458/20240528_230351_bgaslb.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
@@ -940,11 +938,11 @@ export const products: Product[] = [
   
    {
     id: '54',
-    name: 'Metal Craft Candle',
+    name: 'Decor Designer Candle',
     description: 'Elegant metal container with a unique design, filled with a soothing lavender scent.the candle can be customised with the fragrance of customer choice.',
     
     price: 999,
-    image: craft6,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986439/WhatsApp_Image_2023-07-09_at_9.53.01_AM_1_ndh5y0.jpg',
     category: 'Floral',
     fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
     burnTime: '45-50 hours',
@@ -957,61 +955,12 @@ export const products: Product[] = [
 
 export const categories = [
   'All',
-  'Rose',
-  'Apple',
-  'Lotus',
-  'Green Apple',
-  'Pepper Mint',
-  'White Oudh',
-  'Chocolate',
-  'Myrrh',
-  'Sandal Wood',
-  'Pine',
-  'Musk',
-  'Water Melon',
-  'Lemon Grass',
-  'Mahogany',
-  'Rosemary',
-  'Basil',
-  'Neroli',
-  'Lily of Valley',
-  'Cedar Wood',
-   'Vanilla',
-  'Parijat',
-  'Fennel',
-  'Orange',
-  'Jasmine',
-  'Lavender',
-  'Aphrodisia',
-  'Bengal Tuberose',
-  'Loban',
-  'Thyme',
-  'Lemon',
-  'Banana',
-  'Pumpkin',
-  'Citronella',
-  'Cardamom',
-  'Baby Powder',
-  'Mogra',
-  'Coffee',
-  'Vetiver',
-  'Nutmeg',
-  'Marigold',
-  'Patchouli',
-  'Eucalyptus',
-  'Ocean Breeze',
-  'Nargis',
-  'Dunhill',
-  'Mango',
-  'Juniper',
-  'Camphor',
-  'Bergamot',
-  'Ylang Ylang',
-  'Cinnamon'
-  
-  
-  
-  
-  
-  
+  'Jar Candles',
+  'Fresh',
+  'Seasonal',
+  'Floral',
+  'Concrete Artifacts',
+  'Designer Candles',
+  'Glass Jar Candles',
+  'Metal Craft Candles'
 ];
