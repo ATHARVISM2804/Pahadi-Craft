@@ -33,10 +33,15 @@ const CustomOrder = () => {
 
   const controls = useAnimation();
   const slideImages = [
-    'https://res.cloudinary.com/dikisauij/image/upload/v1750225361/cld-sample-4.jpg',
-    'https://res.cloudinary.com/dikisauij/image/upload/v1750225360/samples/dessert-on-a-plate.jpg',
-    'https://res.cloudinary.com/dikisauij/image/upload/v1750225360/samples/cup-on-a-table.jpg',
-    'https://res.cloudinary.com/dikisauij/image/upload/v1750225360/samples/coffee.jpg'
+    'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986455/20231201_143833_wwd2ih.jpg',
+    'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986353/IMG-20231211-WA0096_uiibbx.jpg',
+    'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986439/WhatsApp_Image_2023-07-09_at_9.53.01_AM_1_ndh5y0.jpg',
+    'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986443/WhatsApp_Image_2023-07-09_at_9.53.05_AM_vriobx.jpg',
+    'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711738/IMG-20250621-WA0007_dakmlp.jpg',
+    'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711676/Picture_087_svkjjo.png',
+    'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711659/IMG-20231204-WA0040_dcsxea.jpg'
+
+
   ];
 
   useEffect(() => {
@@ -400,7 +405,7 @@ const CustomOrder = () => {
             
             <div className="text-center mt-8 mb-4">
               <motion.button
-                onClick={() => navigate('/gallery')}
+                onClick={() => navigate('/shop')}
                 className="text-[#5A4232] border-b-2 border-[#C9A66B] hover:border-[#5A4232] transition-colors inline-flex items-center"
                 whileHover={{ x: 5 }}
               >

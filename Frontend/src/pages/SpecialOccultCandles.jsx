@@ -156,40 +156,91 @@ const OccultCandlesPage = () => {
       <AnimatePresence>
         {selectedProduct && (
           <motion.div
-            className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center px-4"
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={() => setSelectedProduct(null)}
           >
             <motion.div
-              className="bg-[#FFF8F2]/90 backdrop-blur-xl border border-[#5A4232]/10 rounded-2xl p-6 max-w-md w-full relative shadow-xl"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-gradient-to-b from-[#FFF8F2] to-[#F6EFE8] rounded-2xl overflow-hidden max-w-md w-full relative shadow-2xl"
+              initial={{ scale: 0.9, opacity: 0, y: 10 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setSelectedProduct(null)}
-                className="absolute top-3 right-3 text-[#5A4232] hover:text-black"
-              >
-                <X className="w-5 h-5" />
-              </button>
-              <img
-                src={selectedProduct.image}
-                alt={selectedProduct.name}
-                className="w-full h-48 object-cover rounded-lg mb-4"
-              />
-              <h2 className="text-2xl font-serif font-bold text-[#5A4232] mb-1">
-                {selectedProduct.name}
-              </h2>
-              <p className="text-sm text-[#6B5849] mb-4">{selectedProduct.description}</p>
-              <div className="text-[#5A4232] space-y-1 text-sm">
-                <p><strong>Category:</strong> {selectedProduct.category}</p>
-                <p><strong>Fragrance Notes:</strong> {selectedProduct.fragranceNotes.join(', ')}</p>
-                <p><strong>Burn Time:</strong> {selectedProduct.burnTime}</p>
-                <p><strong>Weight:</strong> {selectedProduct.weight}</p>
+              <div className="relative">
+                <img
+                  src={selectedProduct.image}
+                  alt={selectedProduct.name}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                  <div className="p-6">
+                    <h2 className="text-3xl font-serif font-bold text-white mb-1">
+                      {selectedProduct.name}
+                    </h2>
+                    <div className="inline-block bg-[#C9A66B] px-3 py-1 rounded-full text-white text-sm font-medium">
+                      ₹{selectedProduct.price}
+                    </div>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setSelectedProduct(null)}
+                  className="absolute top-4 right-4 bg-black/30 text-white p-1.5 rounded-full hover:bg-black/50 transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
-              <div className="mt-4 text-lg font-bold text-[#C9A66B]">
-                ₹{selectedProduct.price}
+
+              <div className="p-6">
+                <div className="mb-4">
+                  <h3 className="text-xs uppercase tracking-wider text-[#6B5849]/80 font-medium mb-1.5">Description</h3>
+                  <p className="text-[#5A4232] text-sm">{selectedProduct.description}</p>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="bg-white/50 backdrop-blur-sm rounded-xl p-3 border border-[#E0D5C8]">
+                    <h3 className="text-xs uppercase tracking-wider text-[#6B5849]/80 font-medium mb-1">Fragrance</h3>
+                    <div className="flex flex-wrap gap-1">
+                      {selectedProduct.fragranceNotes.map((note, index) => (
+                        <span key={index} className="bg-[#F5E9DA] text-[#5A4232] text-xs px-2 py-1 rounded-md">
+                          {note}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white/50 backdrop-blur-sm rounded-xl p-3 border border-[#E0D5C8]">
+                    <h3 className="text-xs uppercase tracking-wider text-[#6B5849]/80 font-medium mb-1">Category</h3>
+                    <p className="text-[#5A4232] font-medium">{selectedProduct.category}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between text-sm border-t border-[#E0D5C8] pt-4">
+                  <div>
+                    <span className="text-[#6B5849]/80 mr-2">Burn Time:</span>
+                    <span className="text-[#5A4232] font-medium">{selectedProduct.burnTime}</span>
+                  </div>
+                  <div>
+                    <span className="text-[#6B5849]/80 mr-2">Weight:</span>
+                    <span className="text-[#5A4232] font-medium">{selectedProduct.weight}</span>
+                  </div>
+                </div>
+                
+                <button
+                  onClick={() => {
+                    handleAddToCart(selectedProduct);
+                    setSelectedProduct(null);
+                  }}
+                  className="w-full mt-5 bg-[#5A4232] hover:bg-[#4A3222] text-white py-3 rounded-xl font-medium transition-colors flex items-center justify-center"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                  Add to Cart
+                </button>
               </div>
             </motion.div>
           </motion.div>

@@ -1,15 +1,58 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { blogPosts } from '../data/blog';
-import { ArrowRight, Calendar, User, Tag, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Calendar, User, Tag, X, ChevronLeft, ChevronRight, Clock, MessageSquare, Share2, Bookmark, Heart, ThumbsUp } from 'lucide-react';
 
 const Blog = () => {
   const [selectedPost, setSelectedPost] = useState(null);
-  const openModal = (post) => setSelectedPost(post);
-  const closeModal = () => setSelectedPost(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  
+  const openModal = (post, index) => {
+    setSelectedPost(post);
+    setSelectedIndex(index);
+  };
+  
+  const closeModal = () => {
+    setSelectedPost(null);
+    setSelectedIndex(null);
+  };
 
   const featuredPost = blogPosts[0];
   const slideImages = blogPosts.slice(0, 6).map((post) => post.image);
+  
+  // Cloudinary image links for the latest article section
+  const cloudinaryImages = [
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756711659/IMG-20231204-WA0040_dcsxea.jpg",
+    'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711421/IMG-20250621-WA0014_hubz2w.jpg',
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756711436/WhatsApp_Image_2023-06-30_at_6.19.15_PM_4_kdlxf3.jpg"
+  ];
+  
+  // Cloudinary image links for the Explore by Theme section
+  const themeImages = [
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756711251/IMG-20230202-WA0008_rlrkl5.jpg",
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756642711/Picture_089_r70tet.png",
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756642696/IMG-20230710-WA0007_aagp1e.jpg",
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756640757/20241118_142218_vywem9.jpg"
+  ];
+  
+  // Cloudinary image links for the Visual Stories section
+  const visualStoryImages = [
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756640750/Picture_088_ikkcg0.png",
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756640699/20241024_141346_a3zszd.jpg",
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756640697/Picture_111_lrx0ga.png",
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756640692/20241025_191707_fmg6de.jpg",
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756640692/Picture_110_zfvzxn.png",
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756640680/20231027_101948_r1wbfa.jpg",
+    "https://res.cloudinary.com/dwkexvdus/image/upload/v1756640670/IMG-20241026-WA0007_dmwf0f.jpg"
+  ];
+
+  // Function to calculate reading time
+  const calculateReadingTime = (content) => {
+    const wordsPerMinute = 200;
+    const words = content.trim().split(/\s+/).length;
+    const time = Math.ceil(words / wordsPerMinute);
+    return time;
+  };
 
   return (
     <div className="min-h-screen pt-20 bg-[#FFF8F2]">
@@ -53,7 +96,7 @@ const Blog = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-[#5A4232]/80 to-transparent z-10"></div>
           <img
-            src={featuredPost.image}
+            src='https://res.cloudinary.com/dwkexvdus/image/upload/v1756711663/WhatsApp_Image_2023-07-08_at_23.42.57_h2wcra.jpg'
             alt={featuredPost.title}
             className="w-full h-[500px] object-cover object-center transform transition-transform duration-700 hover:scale-105"
           />
@@ -122,12 +165,12 @@ const Blog = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => openModal(post)}
+                onClick={() => openModal(post, index)}
                 className="group cursor-pointer bg-white/60 backdrop-blur-sm rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
               >
                 <div className="relative h-56 overflow-hidden">
                   <img 
-                    src={post.image} 
+                    src={index < 3 ? cloudinaryImages[index] : post.image} 
                     alt={post.title} 
                     className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" 
                   />
@@ -207,7 +250,7 @@ const Blog = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-[#5A4232]/90 to-transparent z-10"></div>
                 <img 
-                  src={slideImages[idx % slideImages.length]} 
+                  src={themeImages[idx]} 
                   alt={category}
                   className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
                 />
@@ -251,7 +294,7 @@ const Blog = () => {
           
           <div className="relative overflow-hidden">
             <div className="flex w-max gap-6 animate-[slide-left_40s_linear_infinite] hover:pause">
-              {[...slideImages, ...slideImages].map((src, idx) => (
+              {[...visualStoryImages, ...visualStoryImages.slice(0, 3)].map((src, idx) => (
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -262,7 +305,7 @@ const Blog = () => {
                 >
                   <img
                     src={src}
-                    alt={`Slide ${idx + 1}`}
+                    alt={`Pahadi Craft Product ${idx + 1}`}
                     className="h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
@@ -319,14 +362,14 @@ const Blog = () => {
       <AnimatePresence>
         {selectedPost && (
           <motion.div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 p-4"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-start z-50 p-4 overflow-y-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeModal}
           >
             <motion.div
-              className="bg-white max-w-3xl w-full rounded-2xl overflow-hidden shadow-2xl relative"
+              className="bg-white max-w-4xl w-full rounded-2xl overflow-hidden shadow-2xl relative my-12 mx-auto"
               initial={{ scale: 0.9, y: 30 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 30 }}
@@ -340,75 +383,171 @@ const Blog = () => {
                 <X className="w-5 h-5" />
               </button>
               
-              <div className="relative h-80">
+              {/* Top image section - fixed height to ensure consistency */}
+              <div className="relative h-[320px]">
                 <img 
-                  src={selectedPost.image} 
+                  src={selectedIndex < 3 ? cloudinaryImages[selectedIndex] : selectedPost.image} 
                   alt={selectedPost.title} 
                   className="w-full h-full object-cover" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <span className="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs font-medium mb-2">
+                  <span className="inline-block py-1 px-3 rounded-full bg-white/20 text-white text-xs font-medium mb-2 backdrop-blur-sm">
                     {selectedPost.category}
                   </span>
                   <h2 className="text-3xl font-serif text-white">{selectedPost.title}</h2>
                 </div>
               </div>
               
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
-                  <div className="flex items-center gap-3">
+              {/* Scrollable content area */}
+              <div className="p-8 overflow-auto max-h-[calc(80vh-320px)]">
+                {/* Author and metadata section */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 pb-4 border-b border-gray-200">
+                  <div className="flex items-center gap-3 mb-4 md:mb-0">
                     <img 
-                      src={selectedPost.avatar || slideImages[0]} 
+                      src={selectedIndex < 3 ? themeImages[selectedIndex % themeImages.length] : (selectedPost.avatar || slideImages[0])} 
                       alt={selectedPost.author} 
-                      className="w-10 h-10 rounded-full object-cover"
+                      className="w-12 h-12 rounded-full object-cover border-2 border-[#C9A66B]"
                     />
                     <div>
                       <p className="font-medium text-[#5A4232]">{selectedPost.author}</p>
-                      <p className="text-sm text-gray-500">
-                        {new Date(selectedPost.date).toLocaleDateString('en-US', { 
-                          day: 'numeric', 
-                          month: 'long', 
-                          year: 'numeric' 
-                        })}
-                      </p>
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500">
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-3.5 h-3.5" />
+                          <span>{new Date(selectedPost.date).toLocaleDateString('en-US', { 
+                            day: 'numeric', 
+                            month: 'long', 
+                            year: 'numeric' 
+                          })}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock className="w-3.5 h-3.5" />
+                          <span>{calculateReadingTime(selectedPost.content)} min read</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <MessageSquare className="w-3.5 h-3.5" />
+                          <span>{Math.floor(Math.random() * 20) + 1} comments</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   
                   <div className="flex gap-2">
-                    <button className="p-2 rounded-full bg-[#F5E9DA] text-[#5A4232]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                      </svg>
+                    <button className="p-2 rounded-full bg-[#F5E9DA] text-[#5A4232] hover:bg-[#5A4232] hover:text-white transition-colors" title="Share">
+                      <Share2 className="w-4 h-4" />
                     </button>
-                    <button className="p-2 rounded-full bg-[#F5E9DA] text-[#5A4232]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                      </svg>
+                    <button className="p-2 rounded-full bg-[#F5E9DA] text-[#5A4232] hover:bg-[#5A4232] hover:text-white transition-colors" title="Bookmark">
+                      <Bookmark className="w-4 h-4" />
                     </button>
-                    <button className="p-2 rounded-full bg-[#F5E9DA] text-[#5A4232]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                      </svg>
+                    <button className="p-2 rounded-full bg-[#F5E9DA] text-[#5A4232] hover:bg-[#5A4232] hover:text-white transition-colors" title="Like">
+                      <Heart className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
                 
-                <article className="prose prose-lg prose-headings:font-serif prose-headings:text-[#5A4232] prose-p:text-[#7A6A5A] max-w-none">
-                  <p className="text-[#4B3B2A] whitespace-pre-line leading-relaxed">{selectedPost.content}</p>
-                </article>
-                
-                <div className="mt-8 pt-6 border-t border-gray-200">
-                  <h4 className="font-serif text-[#5A4232] mb-3">Related Articles</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {['Aromatherapy', 'Sustainable Living', 'Craftsmanship', 'Natural Ingredients'].map((tag) => (
-                      <span 
-                        key={tag}
-                        className="px-3 py-1 bg-[#F5E9DA] text-[#5A4232] rounded-full text-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                <div className="grid grid-cols-1 lg:grid-cols-7 gap-6">
+                  {/* Main content column - takes more space */}
+                  <div className="lg:col-span-5">
+                    {/* Article highlights */}
+                    <div className="bg-[#F5E9DA]/30 p-4 rounded-lg mb-6">
+                      <h4 className="font-medium text-[#5A4232] mb-2">Article Highlights</h4>
+                      <ul className="list-disc pl-5 text-sm text-[#7A6A5A] space-y-1">
+                        <li>Understanding the essence of traditional craftsmanship</li>
+                        <li>How natural materials enhance product quality and sustainability</li>
+                        <li>The story behind Pahadi Craft's artisanal techniques</li>
+                        <li>Integrating mountain traditions into modern home decor</li>
+                      </ul>
+                    </div>
+                    
+                    {/* Main content */}
+                    <article className="prose prose-lg prose-headings:font-serif prose-headings:text-[#5A4232] prose-p:text-[#7A6A5A] max-w-none mb-8">
+                      <p className="text-[#4B3B2A] leading-relaxed">{selectedPost.content}</p>
+                      
+                      {/* Additional styled paragraph for better content formatting */}
+                      <h3 className="text-xl font-serif text-[#5A4232] mt-8">The Importance of Craftsmanship</h3>
+                      <p className="text-[#7A6A5A]">
+                        At Pahadi Craft, each product represents hours of meticulous handwork by skilled artisans who have inherited techniques passed down through generations. This dedication to traditional methods ensures that every item not only serves its purpose but also carries cultural significance.
+                      </p>
+                      
+                      <blockquote className="border-l-4 border-[#C9A66B] pl-4 italic my-6">
+                        "The true beauty of handicrafts lies in their imperfections - each piece tells a story of human touch and artistic expression that machines can never replicate."
+                      </blockquote>
+                    </article>
+                    
+                    {/* Engagement section */}
+                    <div className="flex items-center justify-between py-4 border-t border-b border-gray-200 mb-8">
+                      <div className="flex items-center gap-2">
+                        <button className="flex items-center gap-1 text-[#5A4232] hover:text-[#C9A66B]">
+                          <ThumbsUp className="w-4 h-4" />
+                          <span className="text-sm">{Math.floor(Math.random() * 100) + 10} Likes</span>
+                        </button>
+                      </div>
+                      
+                      <div className="flex items-center gap-4">
+                        <span className="hidden sm:inline text-sm text-gray-500">Share this article:</span>
+                        <div className="flex gap-2">
+                          {['facebook', 'twitter', 'instagram'].map(platform => (
+                            <a 
+                              key={platform} 
+                              href="#" 
+                              className="w-8 h-8 rounded-full bg-[#F5E9DA] flex items-center justify-center text-[#5A4232] hover:bg-[#C9A66B] hover:text-white transition-colors"
+                            >
+                              <span className="text-xs uppercase">{platform.charAt(0)}</span>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Tags */}
+                    <div>
+                      <h4 className="font-serif text-lg text-[#5A4232] mb-3">Topics</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {['Aromatherapy', 'Sustainable Living', 'Craftsmanship', 'Natural Ingredients', 'Eco-friendly', 'Handmade'].map((tag) => (
+                          <span 
+                            key={tag}
+                            className="px-3 py-1 bg-[#F5E9DA] text-[#5A4232] rounded-full text-sm hover:bg-[#C9A66B] hover:text-white transition-colors cursor-pointer"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Sidebar column - takes less space */}
+                  <div className="lg:col-span-2">
+                    {/* Related articles */}
+                    <div>
+                      <h4 className="font-serif text-lg text-[#5A4232] mb-4">Related Articles</h4>
+                      <div className="space-y-4">
+                        {[1, 2, 3].map(i => (
+                          <div key={i} className="group cursor-pointer">
+                            <div className="h-36 rounded-lg overflow-hidden mb-2">
+                              <img 
+                                src={visualStoryImages[i % visualStoryImages.length]} 
+                                alt={`Related article ${i}`}
+                                className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-300" 
+                              />
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium text-[#5A4232] line-clamp-2 group-hover:text-[#C9A66B] transition-colors">
+                                {i === 1 ? 'Sustainable Practices in Traditional Craft Making' : 
+                                 i === 2 ? 'The Healing Properties of Himalayan Beeswax Candles' :
+                                 'Mountain Inspired Home Decor Trends'}
+                              </h5>
+                              <p className="text-xs text-gray-500 mt-1">
+                                {new Date(Date.now() - i * 86400000).toLocaleDateString('en-US', {
+                                  month: 'short',
+                                  day: 'numeric',
+                                  year: 'numeric'
+                                })}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
