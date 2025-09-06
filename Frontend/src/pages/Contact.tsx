@@ -215,7 +215,7 @@ const Contact = () => {
               <h2 className="text-2xl font-serif text-[#5A4232] mb-6 text-center">Visit Our Location</h2>
               <div className="h-96 w-full rounded-lg overflow-hidden shadow-md">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110200.41928281881!2d78.00468476330292!3d30.32440795542192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390929c356c888af%3A0x4c3562c032518799!2sDehradun%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1669852760413!5m2!1sen!2sin" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.65222052065!2d76.0630474!3d31.6680446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391b1f3900000001%3A0xe22cb75077411824!2sPahadiCraft%20Candles%20Himachal!5e1!3m2!1sen!2sin!4v1757180258108!5m2!1sen!2sin" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
