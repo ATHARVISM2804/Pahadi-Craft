@@ -49,6 +49,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
+            <div className='flex flex-col lg:flex-row items-center gap-4 justify-center w-full sm:w-auto'>
             <Link to="/shop">
               <motion.button 
                 className="group px-8 py-3 bg-[#C9A66B] text-white rounded-full hover:bg-[#5A4232] transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg"
@@ -56,7 +57,7 @@ const Hero = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Flame className="w-5 h-5 group-hover:animate-float" />
-                <span className="relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:scale-x-0 after:origin-right after:transition-transform group-hover:after:scale-x-100 group-hover:after:origin-left">
+                <span className="relative  after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:scale-x-0 after:origin-right after:transition-transform group-hover:after:scale-x-100 group-hover:after:origin-left">
                   Shop Collection
                 </span>
               </motion.button>
@@ -71,6 +72,7 @@ const Hero = () => {
                 Explore More 
               </motion.button>
             </Link>
+            </div>
           </motion.div>
         </motion.div>
       </div>
