@@ -148,6 +148,6 @@ export const fragrances: Fragrance[] = [
     topNotes: ['Lemongrass', 'Lime'],
     middleNotes: ['Verbena', 'Green Tea'],
     baseNotes: ['Bamboo', 'White Musk'],
-    image: amber,
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756642703/20210529_123658_mythu8.jpg',
   },
 ];
