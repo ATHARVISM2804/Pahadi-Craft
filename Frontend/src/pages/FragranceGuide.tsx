@@ -13,7 +13,6 @@ const FragranceGuide = () => {
   'Apple',
   'Lotus',
   'Green Apple',
-  
   'Pepper Mint',
   'White Oudh',
   'Chocolate',
@@ -140,7 +139,7 @@ const FragranceGuide = () => {
           )}
 
           {/* Fragrance Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {fragrances
               .filter((fragrance) =>
                 selectedCategory === 'All'
@@ -155,37 +154,40 @@ const FragranceGuide = () => {
                   viewport={{ once: true }}
                   className="bg-white/40 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all"
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-2">
-                    {/* Image */}
-                    <div className="relative h-64 sm:h-full">
+                  {/* Card Layout - Adjust to be more compact */}
+                  <div className="flex flex-col h-full">
+                    {/* Image - Increased height and improved visibility */}
+                    <div className="relative h-64 sm:h-72 overflow-hidden">
                       <img
                         src={fragrance.image}
                         alt={fragrance.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                       />
+                      {/* Add a subtle gradient overlay to make text more visible if placed on image */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
                     </div>
 
                     {/* Content */}
-                    <div className="p-6 sm:p-8 flex flex-col justify-center">
-                      <h2 className="text-2xl font-serif font-bold text-[#5A4232] mb-3">
+                    <div className="p-5 flex flex-col flex-grow">
+                      <h2 className="text-xl font-serif font-bold text-[#5A4232] mb-2">
                         {fragrance.name}
                       </h2>
-                      <p className="text-[#6B5849] text-sm mb-4 leading-relaxed">
+                      <p className="text-[#6B5849] text-sm mb-3 leading-relaxed">
                         {fragrance.description}
                       </p>
-                      <span className="inline-block px-4 py-1 bg-[#F5E9DA] text-[#5A4232] rounded-full text-xs font-medium mb-4 w-max shadow-sm">
+                      <span className="inline-block px-4 py-1 bg-[#F5E9DA] text-[#5A4232] rounded-full text-xs font-medium mb-3 w-max shadow-sm">
                         {fragrance.mood}
                       </span>
 
-                      {/* Notes */}
-                      <div className="space-y-4">
+                      {/* Notes - Made more compact */}
+                      <div className="space-y-3 mt-auto">
                         <div>
-                          <h3 className="font-serif font-medium text-[#5A4232] mb-1">Top Notes</h3>
-                          <div className="flex flex-wrap gap-2">
+                          <h3 className="font-serif font-medium text-[#5A4232] mb-1 text-sm">Top Notes</h3>
+                          <div className="flex flex-wrap gap-1">
                             {fragrance.topNotes.map((note, index) => (
                               <span
                                 key={index}
-                                className="px-3 py-1 bg-[#C9A66B]/10 text-[#C9A66B] rounded-full text-sm"
+                                className="px-2 py-0.5 bg-[#C9A66B]/10 text-[#C9A66B] rounded-full text-xs"
                               >
                                 {note}
                               </span>
@@ -193,12 +195,12 @@ const FragranceGuide = () => {
                           </div>
                         </div>
                         <div>
-                          <h3 className="font-serif font-medium text-[#5A4232] mb-1">Middle Notes</h3>
-                          <div className="flex flex-wrap gap-2">
+                          <h3 className="font-serif font-medium text-[#5A4232] mb-1 text-sm">Middle Notes</h3>
+                          <div className="flex flex-wrap gap-1">
                             {fragrance.middleNotes.map((note, index) => (
                               <span
                                 key={index}
-                                className="px-3 py-1 bg-[#5A4232]/10 text-[#5A4232] rounded-full text-sm"
+                                className="px-2 py-0.5 bg-[#5A4232]/10 text-[#5A4232] rounded-full text-xs"
                               >
                                 {note}
                               </span>
@@ -206,13 +208,12 @@ const FragranceGuide = () => {
                           </div>
                         </div>
                         <div>
-                          <h3 className="font-serif font-medium text-[#5A4232] mb-1">Base Notes</h3>
-                          <div className="flex flex-wrap gap-2">
+                          <h3 className="font-serif font-medium text-[#5A4232] mb-1 text-sm">Base Notes</h3>
+                          <div className="flex flex-wrap gap-1">
                             {fragrance.baseNotes.map((note, index) => (
                               <span
-                              
                                 key={index}
-                                className="px-3 py-1 bg-[#A8B5A2]/10 text-[#A8B5A2] rounded-full text-sm"
+                                className="px-2 py-0.5 bg-[#A8B5A2]/10 text-[#A8B5A2] rounded-full text-xs"
                               >
                                 {note}
                               </span>
