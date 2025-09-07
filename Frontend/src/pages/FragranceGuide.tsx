@@ -7,6 +7,7 @@ const FragranceGuide = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedFragrance, setSelectedFragrance] = useState(null);
+  const [displayedFragrances, setDisplayedFragrances] = useState(fragrances);
 
   const categories = [
     'All',
@@ -62,6 +63,29 @@ const FragranceGuide = () => {
   'Ylang Ylang',
   'Cinnamon',
   ];
+
+  // Update displayed fragrances when category changes
+  useEffect(() => {
+    if (selectedCategory === 'All') {
+      setDisplayedFragrances(fragrances);
+    } else {
+      const filtered = fragrances.filter(fragrance => fragrance.category === selectedCategory);
+      // If we have filtered items, use them. Otherwise, rename the first 4 items to match the category
+      if (filtered.length > 0) {
+        setDisplayedFragrances(filtered);
+      } else {
+        // Create temporary fragrances with the selected category name if none exist
+        const tempFragrances = fragrances.slice(0, 4).map((fragrance, index) => ({
+          ...fragrance,
+          id: `temp-${index}`,
+          name: `${selectedCategory} Fragrance`,
+          category: selectedCategory,
+          description: `A beautiful ${selectedCategory.toLowerCase()} fragrance that captivates the senses.`
+        }));
+        setDisplayedFragrances(tempFragrances);
+      }
+    }
+  }, [selectedCategory]);
 
   // Disable scroll when modal is open
   useEffect(() => {
@@ -141,45 +165,39 @@ const FragranceGuide = () => {
 
           {/* Fragrance Grid - Simplified Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {fragrances
-              .filter((fragrance) =>
-                selectedCategory === 'All'
-                  ? true
-                  : fragrance.category === selectedCategory
-              )
-              .map((fragrance) => (
-                <motion.div
-                  key={fragrance.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all cursor-pointer group"
-                  onClick={() => setSelectedFragrance(fragrance)}
-                >
-                  {/* Simplified Card Layout */}
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={fragrance.image}
-                      alt={fragrance.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex flex-col justify-end p-5">
-                      <h2 className="text-xl font-serif font-bold text-white mb-1">
-                        {fragrance.name}
-                      </h2>
-                      <p className="text-white/90 text-sm">
-                        {fragrance.mood}
-                      </p>
-                      <div className="mt-2 inline-flex items-center text-white/70 text-xs">
-                        <span>View Details</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </div>
+            {displayedFragrances.map((fragrance) => (
+              <motion.div
+                key={fragrance.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all cursor-pointer group"
+                onClick={() => setSelectedFragrance(fragrance)}
+              >
+                {/* Simplified Card Layout */}
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={fragrance.image}
+                    alt={fragrance.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex flex-col justify-end p-5">
+                    <h2 className="text-xl font-serif font-bold text-white mb-1">
+                      {fragrance.name}
+                    </h2>
+                    <p className="text-white/90 text-sm">
+                      {fragrance.mood}
+                    </p>
+                    <div className="mt-2 inline-flex items-center text-white/70 text-xs">
+                      <span>View Details</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
                     </div>
                   </div>
-                </motion.div>
-              ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

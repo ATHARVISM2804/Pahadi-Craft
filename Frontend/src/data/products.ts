@@ -936,18 +936,7 @@ export const products: Product[] = [
     weight: '8 oz',
   },
   
-   {
-    id: '54',
-    name: 'Decor Designer Candle',
-    description: 'Elegant metal container with a unique design, filled with a soothing lavender scent.the candle can be customised with the fragrance of customer choice.',
-    
-    price: 999,
-    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1754986439/WhatsApp_Image_2023-07-09_at_9.53.01_AM_1_ndh5y0.jpg',
-    category: 'Floral',
-    fragranceNotes: ['Rose', 'Jasmine', 'Green Notes'],
-    burnTime: '45-50 hours',
-    weight: '8 oz',
-  },
+   
 
   
 
