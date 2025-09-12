@@ -150,7 +150,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-serif text-[#C9A66B]">Address</h3>
-                      <p className="text-white/90">Dehradun, Uttarakhand, India</p>
+                      <p className="text-white/90">Pahadi Craft, Gagret, Distt.Una, Himachal Pradesh-177201</p>
                     </div>
                   </div>
                   
@@ -254,7 +254,7 @@ const Contact = () => {
           {/* Call to Action */}
           <div className="text-center">
             <p className="text-[#7A6A5A] italic">
-              "Handcrafted with love in the heart of Uttarakhand."
+              "Handcrafted with love in the heart of Himachal."
             </p>
           </div>
         </motion.div>
