@@ -17,7 +17,7 @@ const occultCandles = [
       'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711583/20240911_162116_ymbtl9.jpg',
     ],
     category: 'Occult',
-    price: 799,
+    price: 300,
     fragranceNotes: ['Frankincense', 'Myrrh'],
     burnTime: '40 hours',
     weight: '200g',
@@ -32,7 +32,7 @@ const occultCandles = [
       
     ],
     category: 'Occult',
-    price: 999,
+    price: 100,
     fragranceNotes: ['Lavender', 'Jasmine'],
     burnTime: '50 hours',
     weight: '250g',
@@ -47,7 +47,7 @@ const occultCandles = [
       
     ],
     category: 'Occult',
-    price: 899,
+    price: 100,
     fragranceNotes: ['Black Rose', 'Patchouli'],
     burnTime: '45 hours',
     weight: '220g',
@@ -63,7 +63,7 @@ const occultCandles = [
       'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711571/IMG_20221003_001705_533_appie0.jpg'
     ],
     category: 'Occult',
-    price: 1099,
+    price: 120,
     fragranceNotes: ['Amber', 'Sandalwood'],
     burnTime: '55 hours',
     weight: '240g',
@@ -78,7 +78,7 @@ const occultCandles = [
       'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711643/IMG_20220509_221346_728_dksooy.jpg'
     ],
     category: 'Occult',
-    price: 950,
+    price: 100,
     fragranceNotes: ['Vanilla', 'Blue Lotus'],
     burnTime: '42 hours',
     weight: '210g',
@@ -96,7 +96,7 @@ const occultCandles = [
       'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711637/HI-21583442-figurine-candle_a4ts8b.jpg'
     ],
     category: 'Occult',
-    price: 875,
+    price: 100,
     fragranceNotes: ['Mugwort', 'Cedar'],
     burnTime: '48 hours',
     weight: '230g',
@@ -111,7 +111,7 @@ const occultCandles = [
 
     ],
     category: 'Occult',
-    price: 1199,
+    price: 100,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -126,7 +126,7 @@ const occultCandles = [
       
     ],
     category: 'Occult',
-    price: 1199,
+    price: 130,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -140,7 +140,7 @@ const occultCandles = [
       'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711602/IMG-20210526-WA0037_ljll5a.jpg',
     ],
     category: 'Occult',
-    price: 1199,
+    price: 120,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -156,7 +156,7 @@ const occultCandles = [
 
     ],
     category: 'Occult',
-    price: 1199,
+    price: 100,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -171,7 +171,7 @@ const occultCandles = [
      'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711640/IMG_20221030_194038_120_ko6ncx.webp'
     ],
     category: 'Occult',
-    price: 1199,
+    price: 150,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -187,7 +187,7 @@ const occultCandles = [
     'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711586/WhatsApp_Image_2023-07-08_at_23.40.52_tno3i3.jpg'
     ],
     category: 'Occult',
-    price: 1199,
+    price: 500,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -204,7 +204,7 @@ const occultCandles = [
       'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711642/0038_u5mym4.jpg'
     ],
     category: 'Occult',
-    price: 1199,
+    price: 120,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -218,7 +218,7 @@ const occultCandles = [
     
     ],
     category: 'Occult',
-    price: 1199,
+    price: 120,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -232,7 +232,7 @@ const occultCandles = [
     
     ],
     category: 'Occult',
-    price: 1199,
+    price: 100,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -248,7 +248,7 @@ const occultCandles = [
 
     ],
     category: 'Occult',
-    price: 1199,
+    price: 120,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -264,7 +264,7 @@ const occultCandles = [
      
     ],
     category: 'Occult',
-    price: 1199,
+    price: 130,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -279,7 +279,7 @@ const occultCandles = [
       
     ],
     category: 'Occult',
-    price: 1199,
+    price: 150,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -295,7 +295,7 @@ const occultCandles = [
 
     ],
     category: 'Occult',
-    price: 1199,
+    price: 100,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -312,7 +312,7 @@ const occultCandles = [
       'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711626/IMG-20220903-WA0023_xnblsj.jpg'
     ],
     category: 'Occult',
-    price: 1199,
+    price: 100,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -328,7 +328,7 @@ const occultCandles = [
     
     ],
     category: 'Occult',
-    price: 1199,
+    price: 100,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -343,7 +343,7 @@ const occultCandles = [
       'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711592/WhatsApp_Image_2023-07-09_at_9.54.06_AM_1_q1tchr.jpg'
     ],
     category: 'Occult',
-    price: 1199,
+    price: 150,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
