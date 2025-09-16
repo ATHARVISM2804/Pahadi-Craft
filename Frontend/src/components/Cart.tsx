@@ -27,9 +27,9 @@ const Cart = () => {
     );
   };
 
-  // Calculate GST amount (18% of subtotal)
+  // Calculate GST amount (5% of subtotal)
   const getGST = () => {
-    return getSubtotal() * 0.18;
+    return getSubtotal() * 0.05;
   };
 
   // ✅ Load Razorpay script once
@@ -159,7 +159,7 @@ const Cart = () => {
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-sm text-gray-600">GST (18%)</span>
+                    <span className="text-sm text-gray-600">GST (5%)</span>
                     <span className="text-sm text-gray-600">
                       ₹{getGST().toFixed(2)}
                     </span>
