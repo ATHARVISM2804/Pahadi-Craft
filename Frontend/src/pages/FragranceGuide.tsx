@@ -122,7 +122,7 @@ const FragranceGuide = () => {
             <div className="relative">
               <button
                 onClick={() => setShowFilters((prev) => !prev)}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#F5E9DA] text-[#5A4232] hover:bg-[#e8d9c5] transition"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#F5E9DA] text-[#3A2812] font-bold hover:bg-[#e8d9c5] transition"
               >
                 <Filter className="w-4 h-4" />
                 {selectedCategory === 'All' ? 'All Filters' : selectedCategory}
@@ -140,7 +140,7 @@ const FragranceGuide = () => {
                 className="w-[90%] max-w-5xl p-6 rounded-xl backdrop-blur-md bg-[#5A4232]/30 shadow-xl overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
               >
-                <h2 className="text-lg font-serif text-white mb-4 text-center">Select a Category</h2>
+                <h2 className="text-lg font-serif text-white mb-4 text-center font-bold">Select a Category</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 max-h-[300px] overflow-y-auto">
                   {categories.map((category) => (
                     <button
@@ -149,10 +149,10 @@ const FragranceGuide = () => {
                         setSelectedCategory(category);
                         setShowFilters(false);
                       }}
-                      className={`text-sm px-3 py-2 rounded-full transition ${
+                      className={`text-sm px-3 py-2 rounded-full transition font-medium ${
                         selectedCategory === category
-                          ? 'bg-white text-[#5A4232]'
-                          : 'bg-white/20 text-[#5A4232] hover:bg-white/30'
+                          ? 'bg-white text-[#5A4232] shadow-md'
+                          : 'bg-white/80 text-[#3A2812] hover:bg-white hover:text-[#5A4232]'
                       }`}
                     >
                       {category}

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const occultCandles = [
   {
     id: 'occult1',
-    name: 'Mystic Flame',
+    name: 'Witch Candle',
     description: 'Infused with ancient ritual herbs for meditation.',
     image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711581/20240911_162213_jsfnxx.jpg',
     category: 'Occult',
@@ -18,8 +18,8 @@ const occultCandles = [
   },
   {
     id: 'occult2',
-    name: 'Lunar Whisper',
-    description: 'Moon-blessed candle to enhance intuition and calm.',
+    name: 'Star of David Candle ',
+    description: 'A sacred candle symbolizing protection and spirituality.',
     image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711575/IMG-20231211-WA0053_fxtdku.jpg',
     category: 'Occult',
     price: 999,
@@ -29,8 +29,8 @@ const occultCandles = [
   },
   {
     id: 'occult3',
-    name: 'Shadow Bloom',
-    description: 'Embrace transformation with this dark floral blend.',
+    name: 'Skull Candle',
+    description: 'Embrace the power of transformation and protection.',
     image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711585/WhatsApp_Image_2023-07-09_at_9.54.08_AM_1_m70sfo.jpg',
     category: 'Occult',
     price: 899,
@@ -40,8 +40,8 @@ const occultCandles = [
   },
   {
     id: 'occult4',
-    name: 'Eclipse Ember',
-    description: 'A rare candle crafted during a lunar eclipse.',
+    name: 'Wolf Candle',
+    description: 'Channel the spirit of the wild with this earthy blend.',
     image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711571/IMG-20220903-WA0024_cvnz8s.jpg',
     category: 'Occult',
     price: 1099,
@@ -51,8 +51,8 @@ const occultCandles = [
   },
   {
     id: 'occult5',
-    name: 'Celestial Veil',
-    description: 'Invoke tranquility with stardust-infused wax.',
+    name: 'Male Cat Candle',
+    description: 'Invoke mystery and independence with this unique scent.',
     image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711607/IMG-20231211-WA0059_wwlnvl.jpg',
     category: 'Occult',
     price: 950,
@@ -62,8 +62,8 @@ const occultCandles = [
   },
   {
     id: 'occult6',
-    name: 'Witch’s Breath',
-    description: 'Summon magic with this powerful herbal blend.',
+    name: 'Couple Candle',
+    description: 'Perfect for rituals of love and harmony.',
     image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711635/20210523_103702_rvwhvv.jpg',
     category: 'Occult',
     price: 875,
@@ -73,8 +73,8 @@ const occultCandles = [
   },
   {
     id: 'occult7',
-    name: 'Phoenix Ash',
-    description: 'Rise anew with this fiery, purifying candle.',
+    name: 'Skull Candle',
+    description: 'A powerful symbol for transformation and protection.',
     image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711584/0045_p1iwhe.jpg',
     category: 'Occult',
     price: 1199,
