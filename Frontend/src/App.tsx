@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
@@ -27,7 +28,8 @@ import Checkout from './components/Checkout';
 import UserProfile from './pages/UserProfile';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
-import SpecialOccultCandles from './pages/SpecialOccultCandles'; // 🔥 Add this line
+import SpecialOccultCandles from './pages/SpecialOccultCandles';// 🔥 Add this line
+import PremiumCandles from './pages/PremiumCandles'; // Premium candles page
 
 function App() {
   return (
@@ -54,7 +56,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path='/profile' element={<UserProfile />} />
           <Route path='/checkout' element={<Checkout />} />
-           <Route path="/special-occult-candles" element={<SpecialOccultCandles />} /> {/* 👈 Add this line */}
+          <Route path="/special-occult-candles" element={<SpecialOccultCandles />} /> {/* 👈 Add this line */}
+          <Route path="/premium-candles" element={<PremiumCandles />} /> {/* Premium candles route */}
 
           
 
@@ -73,7 +76,28 @@ function App() {
   );
 }
 
+import PopupOffer from './components/PopupOffer';
+
 const HomePage = () => {
+  const [showPopup, setShowPopup] = React.useState(false);
+
+  React.useEffect(() => {
+    // Check if this is a page reload (not first visit) using sessionStorage
+    const hasVisited = sessionStorage.getItem('hasVisitedBefore');
+    
+    if (!hasVisited) {
+      // First visit in this session, set the flag
+      sessionStorage.setItem('hasVisitedBefore', 'true');
+    } else {
+      // This is a reload/revisit, show the popup after a short delay
+      const timer = setTimeout(() => {
+        setShowPopup(true);
+      }, 1500);
+      
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <main>
       <Hero />
@@ -82,6 +106,7 @@ const HomePage = () => {
       <WhyChooseUs />
       <Testimonials />
       <Instagram />
+      <PopupOffer isOpen={showPopup} onClose={() => setShowPopup(false)} />
     </main>
   );
 };

@@ -11,6 +11,8 @@ export interface Product {
   weight?: string;
   stock: number;
   sku: string;
+  additionalImages?: string[];
+  addtionalImages?: string[]; // Handle typo in some products
 }
 
 export interface NavLink {
