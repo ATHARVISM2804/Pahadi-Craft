@@ -273,7 +273,7 @@ const occultCandles = [
     id: 'occult25',
     name: '18',
     description: 'A powerful symbol for transformation and protection.',
-    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711632/20231230_133117_u5tjhc.heic',
+    image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711595/IMG-20221009-WA0003_jchrcl.jpg',
     category: 'Occult',
     price: 1199,
     fragranceNotes: ['Cinnamon', 'Clove'],
