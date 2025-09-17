@@ -111,7 +111,7 @@ const occultCandles = [
 
     ],
     category: 'Occult',
-    price: 100,
+    price: 300,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -140,7 +140,7 @@ const occultCandles = [
       'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711602/IMG-20210526-WA0037_ljll5a.jpg',
     ],
     category: 'Occult',
-    price: 120,
+    price: 240,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -196,7 +196,7 @@ const occultCandles = [
   
   {
     id: 'occult15',
-    name: 'Knob Candle',
+    name: '7 Knob Candle (2 Candles)',
     description: 'A powerful symbol for transformation and protection.',
     image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711643/0037_zski2i.jpg',
     additionalImages: [
@@ -204,7 +204,7 @@ const occultCandles = [
       'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711642/0038_u5mym4.jpg'
     ],
     category: 'Occult',
-    price: 120,
+    price: 240 ,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -218,7 +218,7 @@ const occultCandles = [
     
     ],
     category: 'Occult',
-    price: 120,
+    price: 199,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
@@ -287,7 +287,7 @@ const occultCandles = [
    
    {
     id: 'occult24',
-    name: 'Sun and Moon',
+    name: 'Sun and Moon (per Pieces)',
     description: 'A powerful symbol for transformation and protection.',
     image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711572/0042_l7ling.jpg',
     additionalImages: [
@@ -303,16 +303,14 @@ const occultCandles = [
    
    {
     id: 'occult26',
-    name: 'Key Candle',
+    name: 'Key Candle(4 Pieces)',
     description: 'A powerful symbol for transformation and protection.',
     image: 'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711624/IMG-20221221-WA0014_pfck7k.jpg',
     additionalImages: [
-      'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711626/IMG-20220903-WA0023_xnblsj.jpg',
-      'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711626/IMG_20220509_222405_294_vagzov.jpg',
-      'https://res.cloudinary.com/dwkexvdus/image/upload/v1756711626/IMG-20220903-WA0023_xnblsj.jpg'
+     
     ],
     category: 'Occult',
-    price: 100,
+    price: 400,
     fragranceNotes: ['Cinnamon', 'Clove'],
     burnTime: '60 hours',
     weight: '280g',
